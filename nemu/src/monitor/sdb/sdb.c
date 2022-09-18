@@ -67,12 +67,12 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si [N]","Let the program step through N instructions and then pause execution,when N is not given, the default is 1"/*, cmd_si [N]*/},
-  { "info SUBCMD","Print status register and the print information monitoring points"/*,cmd_info*/},
-  { "x N EXPR","Work out the value of the expression EXPR, using the result as the starting memory. Address, which outputs n consecutive 4 bytes in hexadecimal form"/*,cmd_xN*/},
-  {"p EXPR","Find the value of the expression EXPR"/*,cmd_pEX*/},
-  {"w EXPR","Pauses program execution when the value of the expression EXPR changes"/*,cmd_wEX*/},
-  {"d N","Delete the number of N monitoring points"/*,cmd_dN*/},
+  { "si_[N]","Let the program step through N instructions and then pause execution,when N is not given, the default is 1"/*, cmd_si [N]*/},
+  { "info_SUBCMD","Print status register and the print information monitoring points"/*,cmd_info*/},
+  { "x_N EXPR","Work out the value of the expression EXPR, using the result as the starting memory. Address, which outputs n consecutive 4 bytes in hexadecimal form"/*,cmd_xN*/},
+  {"p_EXPR","Find the value of the expression EXPR"/*,cmd_pEX*/},
+  {"w_EXPR","Pauses program execution when the value of the expression EXPR changes"/*,cmd_wEX*/},
+  {"d_N","Delete the number of N monitoring points"/*,cmd_dN*/},
   /* TODO: Add more commands */
 
 };
