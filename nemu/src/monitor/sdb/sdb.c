@@ -18,7 +18,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
-#include "../../../include/memory/vaddr.h"
+#include "../../../include/memory/paddr.h"
 static int is_batch_mode = false;
 
 void init_regex();
@@ -84,7 +84,7 @@ static int cmd_x(char *args) {
 	sscanf(strtok(NULL, " "),"%x",&sec);
 	printf("%d,0x%08x\n",fir,sec);
 	for(int i=0;i<fir;i++){
-	sec=vaddr_read(sec,4);
+	sec=paddr_read(sec,4);
 	printf("0x%08x ", sec);
 	}
 	
