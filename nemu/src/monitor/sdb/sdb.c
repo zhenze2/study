@@ -52,9 +52,9 @@ static int cmd_q(char *args) {
   return -1;
 }
 static int cmd_si(char *args) {
-	char p='1';
-	args =&p;
+	if (!args){
 	printf("cmd_si %c\n", *args);
+	}
   return 0;
 }
 
