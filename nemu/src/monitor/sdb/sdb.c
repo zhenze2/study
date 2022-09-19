@@ -84,7 +84,8 @@ static int cmd_x(char *args) {
 	sscanf(strtok(NULL, " "),"%x",&sec);
 	printf("%d,0x%08x\n",fir,sec);
 	for(int i=0;i<fir;i++){
-	printf("0x%08x ", vaddr_read(sec,4));
+	sec=vaddr_read(sec,4);
+	printf("0x%08x ", sec);
 	}
 	
 	
