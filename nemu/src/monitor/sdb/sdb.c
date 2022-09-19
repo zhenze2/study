@@ -73,7 +73,7 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_x(char *args) {
-	printf("x N EXPR");
+	printf("x N EXPR\n");
   return 0;
 }
 
