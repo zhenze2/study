@@ -51,6 +51,9 @@ static int cmd_c(char *args) {
 static int cmd_q(char *args) {
   return -1;
 }
+
+
+
 static int cmd_si(char *args) {
 	if (args!=NULL){
 	cpu_exec(*args-'0');
@@ -60,6 +63,14 @@ static int cmd_si(char *args) {
   return 0;
 }
 
+
+static int cmd_info(char *args) {
+	if(*args=='r'){
+	isa_reg_display();
+	}
+	else if(*args=='w'){}
+  return 0;
+}
 
 static int cmd_help(char *args);
 
@@ -72,7 +83,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si","Let the program step through N instructions and then pause execution,when N is not given, the default is 1", cmd_si},
-  { "info","Print status register and the print information monitoring points"/*,cmd_info*/},
+  { "info","Print status register and the print information monitoring points",cmd_info},
   { "x","Work out the value of the expression EXPR, using the result as the starting memory. Address, which outputs n consecutive 4 bytes in hexadecimal form"/*,cmd_xN*/},
   {"p","Find the value of the expression EXPR"/*,cmd_pEX*/},
   {"w","Pauses program execution when the value of the expression EXPR changes"/*,cmd_wEX*/},
