@@ -58,7 +58,6 @@ static int cmd_si(char *args) {
 	char *arg = strtok(NULL, " ");
 	int N;
 	sscanf(arg,"%d",&N);
-	printf("%d",N);
 	if (arg!=NULL){
 	cpu_exec(N);
 	}
@@ -70,6 +69,7 @@ static int cmd_si(char *args) {
 
 static int cmd_info(char *args) {
 	char *arg = strtok(NULL, " ");
+	// arg is a string that points to a character that can be extracted directly using *
 	if(*arg=='r'){
 	isa_reg_display();
 	}
@@ -78,9 +78,10 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_x(char *args) {
-	char *arg = strtok(NULL, " ");
-	printf("x N EXPR\n");
-	printf("%s\n", arg);
+	char *fir = strtok(NULL, " ");
+	char *sec = strtok(NULL, " ");
+	printf("%s %s",fir,sec);
+	
   return 0;
 }
 
