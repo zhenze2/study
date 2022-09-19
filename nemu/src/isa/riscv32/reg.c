@@ -25,11 +25,11 @@ const char *regs[] = {
 
 void isa_reg_display() {
 	printf("Yes, you succeeded calling the function of isa_reg_display\n");
-	printf("cpu.pc: %u\ncpu.gpr[32]: ",cpu.pc);
+	printf("cpu.pc: 0x%08x\ncpu.gpr[32]: ",cpu.pc);
 	for(int i=0;i<32;i++){
-	printf("%u ",cpu.gpr[i]);
+	printf("0x%08x\n ",cpu.gpr[i]);
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
