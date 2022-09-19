@@ -24,7 +24,7 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
-	printf("cpu.pc: 0x%08x\ncpu.gpr[32]: \n",cpu.pc);
+	printf("cpu.pc: 0x%08x\ncpu.gpr[32]: \n ",cpu.pc);
 	for(int i=0;i<32;i++){
 	printf("0x%08x\n ",cpu.gpr[i]);
 	}
