@@ -80,8 +80,9 @@ static int cmd_info(char *args) {
 static int cmd_x(char *args) {
 	int fir;
 	sscanf(strtok(NULL, " "),"%d",&fir);
-	uint64_t sec;
-	sscanf(strtok(NULL, " "),"%lu",&sec);
+	uint32_t sec;
+	sscanf(strtok(NULL, " "),"%x",&sec);
+	printf("%d,0x%08x",fir,sec);
 	
 	
 	
