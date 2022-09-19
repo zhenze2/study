@@ -52,7 +52,7 @@ static int cmd_q(char *args) {
   return -1;
 }
 static int cmd_si(char *args) {
-	printf("cmd_si [N]");
+	printf("cmd_si %c", *args);
   return 0;
 }
 
@@ -136,7 +136,7 @@ void sdb_mainloop() {
     int i;
     for (i = 0; i < NR_CMD; i ++) {
       if (strcmp(cmd, cmd_table[i].name) == 0) {
-      	      printf("%s",cmd_table[i].name);
+      	      //printf("%s",cmd_table[i].name);
         if (cmd_table[i].handler(args) < 0) { return; }
         break;
       }
