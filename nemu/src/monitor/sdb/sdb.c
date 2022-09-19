@@ -80,7 +80,7 @@ static int cmd_info(char *args) {
 static int cmd_x(char *args) {
 	char *fir = strtok(NULL, " ");
 	char *sec = strtok(NULL, " ");
-	printf("%s %s",fir,sec);
+	printf("%s %s\n",fir,sec);
 	
   return 0;
 }
