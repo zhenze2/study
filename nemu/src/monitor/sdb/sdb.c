@@ -58,6 +58,7 @@ static int cmd_si(char *args) {
 	char *arg = strtok(NULL, " ");
 	int N;
 	sscanf(arg,"%d",&N);
+	printf("%d",N);
 	if (arg!=NULL){
 	cpu_exec(N);
 	}
