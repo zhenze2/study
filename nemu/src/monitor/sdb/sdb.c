@@ -53,8 +53,6 @@ static int cmd_q(char *args) {
 }
 static int cmd_si(char *args) {
 	if (args!=NULL){
-	int num=*args-'0';
-	printf("cmd_si %c_%d\n", *args,num);
 	cpu_exec(*args-'0');
 	}
 	else
