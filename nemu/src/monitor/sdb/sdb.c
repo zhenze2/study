@@ -54,7 +54,9 @@ static int cmd_q(char *args) {
 static int cmd_si(char *args) {
 	if (args!=NULL){
 	printf("cmd_si %c\n", *args);
+
 	}
+
   return 0;
 }
 
