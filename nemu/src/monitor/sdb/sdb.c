@@ -55,8 +55,11 @@ static int cmd_q(char *args) {
 
 
 static int cmd_si(char *args) {
-	if (args!=NULL){
-	cpu_exec(*args-'0');
+	char *arg = strtok(NULL, " ");
+	int N;
+	sscanf(arg,"%d",&N);
+	if (arg!=NULL){
+	cpu_exec(N);
 	}
 	else
 	{cpu_exec(1);}
