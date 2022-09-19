@@ -74,11 +74,13 @@ static int cmd_info(char *args) {
 
 static int cmd_x(char *args) {
 	printf("x N EXPR\n");
+	printf("%c",*args);
   return 0;
 }
 
 static int cmd_p(char *args) {
 	printf("p EXPR\n");
+
   return 0;
 }
 
