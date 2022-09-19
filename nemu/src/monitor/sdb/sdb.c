@@ -78,9 +78,12 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_x(char *args) {
-	char *fir = strtok(NULL, " ");
-	char *sec = strtok(NULL, " ");
-	printf("%s %s\n",fir,sec);
+	int fir;
+	sscanf(strtok(NULL, " "),"%d",&fir);
+	uint64_t sec;
+	sscanf(strtok(NULL, " "),"%lu",&sec);
+	
+	
 	
   return 0;
 }
