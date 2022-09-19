@@ -25,6 +25,7 @@ const char *regs[] = {
 
 void isa_reg_display() {
 	printf("Yes, you succeeded calling the function of isa_reg_display\n");
+	printf("%d",cpu.pc);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
