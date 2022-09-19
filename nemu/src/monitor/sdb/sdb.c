@@ -52,7 +52,8 @@ static int cmd_q(char *args) {
   return -1;
 }
 static int cmd_si(char *args) {
-	*args='1';
+	char p='1';
+	args =&p;
 	printf("cmd_si %c\n", *args);
   return 0;
 }
