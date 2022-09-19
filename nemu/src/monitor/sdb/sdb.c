@@ -65,17 +65,18 @@ static int cmd_si(char *args) {
 
 
 static int cmd_info(char *args) {
-	if(*args=='r'){
+	char *arg = strtok(NULL, " ");
+	if(*arg=='r'){
 	isa_reg_display();
 	}
-	else if(*args=='w'){}
+	else if(*arg=='w'){}
   return 0;
 }
 
 static int cmd_x(char *args) {
-	char *cc=strtok(NULL," ");
+	char *arg = strtok(NULL, " ");
 	printf("x N EXPR\n");
-	printf("%c %c\n", *args,*cc);
+	printf("%c\n", *arg);
   return 0;
 }
 
@@ -155,6 +156,7 @@ void sdb_mainloop() {
     char *str_end = str + strlen(str);
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
+    //printf("%c",*strtok(NULL," ");
     if (cmd == NULL) { continue; }
 
     /* treat the remaining string as the arguments,
