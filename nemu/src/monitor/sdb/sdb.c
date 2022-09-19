@@ -73,8 +73,9 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_x(char *args) {
+	char *cc=strtok(args," ");
 	printf("x N EXPR\n");
-	printf("%c\n",*args);
+	printf("%c\n",*cc);
   return 0;
 }
 
@@ -152,7 +153,6 @@ void sdb_mainloop() {
 
   for (char *str; (str = rl_gets()) != NULL; ) {
     char *str_end = str + strlen(str);
-	printf("%s\n",str);
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
@@ -161,7 +161,6 @@ void sdb_mainloop() {
      * which may need further parsing
      */
     char *args = cmd + strlen(cmd) + 1;
-    printf("%s,%ld\n",cmd,strlen(cmd));
     if (args >= str_end) {
       args = NULL;
     }
