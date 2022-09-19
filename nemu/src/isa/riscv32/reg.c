@@ -25,7 +25,7 @@ const char *regs[] = {
 
 void isa_reg_display() {
 	printf("Yes, you succeeded calling the function of isa_reg_display\n");
-	printf("%d\n",cpu.pc);
+	printf("cpu.pc: %d\ncpu.gpr[32]: ",cpu.pc);
 	for(int i=0;i<32;i++){
 	printf("%d ",cpu.gpr[i]);
 	}
