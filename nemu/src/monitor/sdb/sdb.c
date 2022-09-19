@@ -75,7 +75,7 @@ static int cmd_info(char *args) {
 static int cmd_x(char *args) {
 	char *cc=strtok(NULL," ");
 	printf("x N EXPR\n");
-	printf("%c\n",*cc);
+	printf("%c %c\n", *args,*cc);
   return 0;
 }
 
