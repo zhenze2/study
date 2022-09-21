@@ -96,8 +96,9 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_p(char *args) {
-	char *expr=strtok(NULL, " ");
-	printf("p EXPR_%s\n", expr);
+	char *exp=strtok(NULL, " ");
+	printf("p EXPR_%s\n", exp);
+	expr(exp,false);
 
   return 0;
 }
