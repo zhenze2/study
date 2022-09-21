@@ -118,7 +118,7 @@ static bool make_token(char *e) {
             tokens->type = rules[i].token_type;
             for (int l = 0; l < substr_len;l++){
                 tokens->str[l]=substr_start[l];
-                printf("%c___%s\n",substr_start[l],substr_start);
+                //printf("%c___%s\n",substr_start[l],substr_start);
                 } 
                 printf("%s\n",tokens->str);
                 nr_token++;
