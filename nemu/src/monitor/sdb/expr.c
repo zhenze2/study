@@ -120,7 +120,7 @@ static bool make_token(char *e) {
                 tokens[nr_token].str[l]=substr_start[l];
                 //printf("%c___%s\n",substr_start[l],substr_start);
                 } 
-                printf("%s\n",tokens->str);
+                printf("%s\n",tokens[nr_token].str);
                 nr_token++;
                 break;
         }
