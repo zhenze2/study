@@ -94,6 +94,7 @@ static bool make_token(char *e) {
         Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
             i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
+        position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
@@ -110,6 +111,7 @@ static bool make_token(char *e) {
         case '/':
         {
             tokens->type = rules[i].token_type;
+            nr_token++;
         }
         case TK_INT:
         {
@@ -118,6 +120,7 @@ static bool make_token(char *e) {
                 tokens->str[l]=substr_start[l];
                 printf("%c\n",substr_start[l]);
                 } 
+                nr_token++;
                 break;
         }
     
@@ -126,7 +129,6 @@ static bool make_token(char *e) {
         }
 
    
-        position += substr_len;
 
         break;
       }
