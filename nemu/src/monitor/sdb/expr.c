@@ -94,7 +94,6 @@ static bool make_token(char *e) {
         Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
             i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
-        position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
@@ -116,7 +115,7 @@ static bool make_token(char *e) {
         {
             tokens->type = rules[i].token_type;
             for (int l = 0; l < substr_len;l++){
-                tokens->str[l]=e[position-substr_len+l];
+                tokens->str[l]=e[position+l];
                 } 
                 break;
         }
@@ -126,6 +125,7 @@ static bool make_token(char *e) {
         }
 
    
+        position += substr_len;
 
         break;
       }
