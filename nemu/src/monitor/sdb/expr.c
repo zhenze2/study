@@ -123,7 +123,7 @@ word_t expr(char *e, bool *success) {
   }
   assert(*success == true);
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
 
   return 0;
+  TODO();
 }
