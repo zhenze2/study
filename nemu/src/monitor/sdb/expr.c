@@ -110,14 +110,14 @@ static bool make_token(char *e) {
         case '*':
         case '/':
         {
-            tokens->type = rules[i].token_type;
+            tokens[nr_token].type = rules[i].token_type;
             nr_token++;
         }
         case TK_INT:
         {
             tokens->type = rules[i].token_type;
             for (int l = 0; l < substr_len;l++){
-                tokens->str[l]=substr_start[l];
+                tokens[nr_token].str[l]=substr_start[l];
                 //printf("%c___%s\n",substr_start[l],substr_start);
                 } 
                 printf("%s\n",tokens->str);
