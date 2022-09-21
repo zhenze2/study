@@ -121,7 +121,7 @@ static bool make_token(char *e) {
             for (int l = 0; l < substr_len;l++){
                 tokens[nr_token].str[l]=substr_start[l];
                 } 
-                printf("%s\n",tokens[nr_token].str);
+                //printf("%s\n",tokens[nr_token].str);
                 nr_token++;
                 break;
         }
@@ -136,7 +136,7 @@ static bool make_token(char *e) {
       }
     }
 	
-   printf("%d\n",nr_token);
+   //printf("%d\n",nr_token);
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
