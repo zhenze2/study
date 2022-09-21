@@ -116,7 +116,7 @@ static bool make_token(char *e) {
         {
             tokens->type = rules[i].token_type;
             for (int l = 0; l < substr_len;l++){
-                tokens->str[l]=e[position+l];
+                tokens->str[l]=e[position-substr_len+l];
                 } 
                 break;
         }
