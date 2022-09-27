@@ -20,6 +20,112 @@
  */
 #include <regex.h>
 
+
+
+
+
+
+
+
+typedef struct stack
+{
+    char val[32][32];
+    int topid;
+} Stack;
+int pri(char arg)
+{
+    if (arg == '-' || arg == '+')
+    {
+        return 1;
+    }
+    else if (arg == '/' || arg == '*')
+    {
+        return 2;
+    }
+    else
+        return 0;
+}
+void push(Stack *L, char *e)
+{
+    if (L->topid == 32 - 1)
+    {
+        return;
+    }
+    L->topid++;
+    for (int i = 0; i < strlen(e); ++i)
+    {
+
+        L->val[L->topid][i] = e[i];
+    }
+}
+int oper(char *p)
+{
+    if (p[0] == '+' || p[0] == '-' || p[0] == '*' || p[0] == '/')
+    {
+        return 1;
+    }
+    return 0;
+}
+void pop(Stack *L)
+{
+    if (L->topid == -1)
+    {
+        return;
+    }
+    --L->topid;
+}
+
+int empty(Stack *s)
+{
+    if (s->topid != -1)
+    {
+        return 1;
+    }
+    return 0;
+}
+void calu(Stack *l, char *p)
+{
+    char *a1 = l->val[l->topid];
+    pop(l);
+    char *a2 = l->val[l->topid];
+    pop(l);
+    float op1, op2;
+    sscanf( a1,"%f", &op1);
+    sscanf( a2,"%f", &op2);
+    char sq[32];
+    if (p[0] == '+')
+    {
+        
+        sprintf(sq, "%f", op2 + op1);
+        push(l, sq);
+    }
+    else if (p[0] == '-')
+    {
+
+        sprintf(sq, "%f", op2 - op1);
+        push(l, sq);
+    }
+    else if (p[0] == '/')
+    {
+
+        sprintf(sq, "%f", op2 / op1);
+        push(l, sq);
+    }
+    else if (p[0] == '*')
+    {
+
+        sprintf(sq, "%f", op2 * op1);
+        push(l, sq);
+    }
+}
+
+
+
+
+
+
+
+
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT
 
@@ -156,6 +262,75 @@ word_t expr(char *e, bool *success) {
   }
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
+    Stack operand;
+    operand.topid = -1;
+    Stack data;
+    data.topid = -1;
+    for (int i = 0; i <= 32; i++)
+    {
+        if (tokens[i].type == TK_INT)
+        {
+            push(&data, tokens[i].str);
+        }
+        else if (tokens[i].type == '(')
+        {
+            push(&operand, tokens[i].str);
+        }
+        else if (tokens[i].type == ')')
+        {
+            while (!empty(&operand) && operand.val[operand.topid][0] != '(')
+            {
+                push(&operand, operand.val[operand.topid]);
+                pop(&operand);
+            }
 
+            pop(&operand);
+        }
+        else if (empty(&operand))
+        {
+            push(&operand, tokens[i].str);
+        }
+        else if (pri(tokens[i].type) < pri(tokens[i].type))
+        {
+            push(&operand, tokens[i].str);
+        }
+        else
+        {
+            while (!empty(&operand) && pri(tokens[i].type) >= pri(tokens[i].type))
+            {
+                push(&data, operand.val[operand.topid]);
+                pop(&operand);
+            }
+            push(&operand, tokens[i].str);
+        }
+    }
+    while (!empty(&data))
+    {
+        push(&operand, data.val[data.topid]);
+        pop(&data);
+    }
+    while (!empty(&operand))
+    {
+        printf("%s", operand.val[operand.topid]);
+        pop(&operand);
+    }
+    Stack result;
+    result.topid = -1;
+    while (empty(&operand) != 0)
+    {
+        if (oper(operand.val[operand.topid]))
+        {
+            push(&result, operand.val[operand.topid]);
+            operand.topid--;
+        }
+        else
+        {
+            calu(&result, operand.val[operand.topid]);
+        }
+    }
+    
+    double re;
+    sscanf("%f",result.val[result.topid],&re);
+    printf("%f\n",re);
   return 0;
 }
