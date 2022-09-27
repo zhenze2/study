@@ -23,7 +23,7 @@
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT
 
-  /* TODO: Add more token types */
+  /* TODO: Add more token types ,have done*/
 
 };
 
@@ -34,6 +34,7 @@ static struct rule {
 
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
+   * have done
    */
   
   {" +", TK_NOTYPE},    // spaces
@@ -100,6 +101,7 @@ static bool make_token(char *e) {
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
+         * have done
          */
         switch (rules[i].token_type)
         {
@@ -117,7 +119,7 @@ static bool make_token(char *e) {
         }
         case TK_INT:
         {
-            tokens->type = rules[i].token_type;
+            tokens[nr_token].type = rules[i].token_type;
             for (int l = 0; l < substr_len;l++){
                 tokens[nr_token].str[l]=substr_start[l];
                 } 
