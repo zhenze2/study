@@ -336,6 +336,7 @@ word_t expr(char *e, bool *success) {
         }
     }
     printf("%s\n", result.val[result.topid]);*/
+    printf("%u\n",eval(0,nr_token-1));
   return 0;
 }
 
