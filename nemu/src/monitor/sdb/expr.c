@@ -57,6 +57,7 @@ void push(Stack *L, char *e)
 
         L->val[L->topid][i] = e[i];
     }
+    L->val[L->topid][strlen(e)] = e[strlen(e)];
 }
 int oper(char *p)
 {
