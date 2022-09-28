@@ -344,7 +344,7 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentheses(int left, int right)
 {
-    if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')'))
+    if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')')||(tokens[left].type != '(' && tokens[right].type != ')'))
     {
         return 0;
     }
@@ -446,7 +446,6 @@ uint32_t eval(int p, int q)
         /* The expression is surrounded by a matched pair of parentheses.
          * If that is the case, just throw away the parentheses.
          */
-	printf("%d\n",check_parentheses(p, q));
         return eval(p + 1, q - 1);
     }
     else
