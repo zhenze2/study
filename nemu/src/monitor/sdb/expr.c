@@ -22,8 +22,8 @@
 
 
 int check_parentness(int left, int right);
-
-
+int num(int c);
+int oprand(int p, int q);
 
 
 /*
@@ -267,7 +267,8 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-  printf("%d\n",check_parentness(0,nr_token-1));
+  //printf("%d\n",check_parentness(0,nr_token-1)); right#
+  printf("%d\n",oprand(0,7));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
@@ -342,6 +343,10 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentness(int left, int right)
 {
+    if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')'))
+    {
+        return 0;
+    }
     int top = -1;
     for (int i = left; i <= right; i++)
     {
@@ -364,4 +369,57 @@ int check_parentness(int left, int right)
     {
         return 0;
     }
+}
+int oprand(int p, int q)
+{
+    int result = p;
+    for (int i = p; i <= q; i++)
+    {
+        if (tokens[i].type != TK_INT && tokens[i].type != '(' && tokens[i].type != ')')
+        {
+            int a = 0;
+            int b = 0;
+            for (int j = result; j < i; j++)
+            {
+                if (tokens[j].type == '(')
+                {
+                    a = 1;
+                    break;
+                }
+            }
+            for (int j = p; j > i; j--)
+            {
+                if (tokens[j].type == ')')
+                {
+                    b = 1;
+                    break;
+                }
+            }
+            if(a*b==1){
+                continue;
+            }
+            if (num(result) >= num(tokens[i].type))
+            {
+                result = i;
+            }
+        }
+    }
+    return 1;
+}
+
+int num(int c)
+{
+    switch (c)
+    {
+    case '+':
+    case '-':
+        return 0;
+    case '*':
+    case '/':
+        return 1;
+
+    default:
+        break;
+    }
+    return 0;
 }
