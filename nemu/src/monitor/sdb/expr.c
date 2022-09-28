@@ -269,7 +269,7 @@ word_t expr(char *e, bool *success) {
     operand.topid = -1;
     Stack data;
     data.topid = -1;
-    for (int i = 0; i <= nr_token; i++)
+    for (int i = 0; i < nr_token; i++)
     {
 
         if (tokens[i].type == TK_INT)
