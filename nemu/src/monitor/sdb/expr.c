@@ -268,7 +268,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   //printf("%d\n",check_parentness(0,nr_token-1)); right#
-  //printf("%d,%d\n",oprand(0,nr_token-1),nr_token);
+  printf("%d,%d\n",oprand(0,nr_token-1),nr_token);
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
@@ -336,7 +336,7 @@ word_t expr(char *e, bool *success) {
         }
     }
     printf("%s\n", result.val[result.topid]);*/
-    printf("%u\n",eval(0,nr_token-1));
+    //printf("%u\n",eval(0,nr_token-1));
   return 0;
 }
 
