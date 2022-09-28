@@ -95,6 +95,7 @@ void calu(Stack *l, char *p)
     sscanf(a1, "%f", &op1);
     sscanf(a2, "%f", &op2);
 	printf("%f,%f\n",op2,op1);
+	printf("%s,%s\n",a2,a1);
     char s[32];
     if (p[0] == '+')
     {
