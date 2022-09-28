@@ -20,8 +20,8 @@
  */
 #include <regex.h>
 
-
-int check_parentness(int left, int right);
+uint32_t eval(int p, int q);
+int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
 
@@ -268,7 +268,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   //printf("%d\n",check_parentness(0,nr_token-1)); right#
-  printf("%d\n",oprand(0,nr_token-1));
+  //printf("%d,%d\n",oprand(0,nr_token-1),nr_token);
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
@@ -341,7 +341,7 @@ word_t expr(char *e, bool *success) {
 
 
 int op[32] __attribute__((used))={};
-int check_parentness(int left, int right)
+int check_parentheses(int left, int right)
 {
     if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')'))
     {
@@ -420,6 +420,54 @@ int num(int c)
 
     default:
         break;
+    }
+    return 0;
+}
+uint32_t eval(int p, int q)
+{
+    if (p > q || check_parentheses(p, q) == 0)
+    {
+        printf("This is a bad expression");
+        /* Bad expression */
+    }
+    else if (p == q)
+    {
+        /* Single token.
+         * For now this token should be a number.
+         * Return the value of the number.
+         */
+        uint32_t data;
+        sscanf(tokens[p].str, "%u", &data);
+        return data;
+    }
+    else if (check_parentheses(p, q) == 1)
+    {
+        /* The expression is surrounded by a matched pair of parentheses.
+         * If that is the case, just throw away the parentheses.
+         */
+
+        return eval(p + 1, q - 1);
+    }
+    else
+    {
+        /* We should do more things here. */
+        int op = oprand(p, q);
+        uint32_t val1 = eval(p, op - 1);
+        uint32_t val2 = eval(op + 1, q);
+
+        switch (tokens[op].type)
+        {
+        case '+':
+            return val1 + val2;
+        case '-':
+            return val1 - val2;
+        case '*':
+            return val1 * val2;
+        case '/':
+            return val1 / val2;
+        default:
+            assert(0);
+        }
     }
     return 0;
 }
