@@ -268,7 +268,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   //printf("%d\n",check_parentness(0,nr_token-1)); right#
-  printf("%d\n",oprand(0,nr_token-1));
+  //printf("%d\n",oprand(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
@@ -376,12 +376,10 @@ int oprand(int p, int q)
     int result = p;
     for (int i = p; i <= q; i++)
     {
-        if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*'||tokens[i].type == '/')
+        if (tokens[i].type != TK_INT && tokens[i].type != '(' && tokens[i].type != ')')
         {
             int a = 0;
             int b = 0;
-            printf("%c\n",tokens[result].type);
-            printf("%c\n",tokens[i].type);
             for (int j = result; j < i; j++)
             {
                 if (tokens[j].type == '(')
@@ -401,13 +399,12 @@ int oprand(int p, int q)
             if(a*b==1){
                 continue;
             }
-            if (num(result) >= num(tokens[i].type))
+            if (num(tokens[result].type) >= num(tokens[i].type))
             {
                 result = i;
             }
         }
     }
-    printf("%c\n",tokens[result].type);
     return result;
 }
 
