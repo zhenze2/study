@@ -26,109 +26,6 @@ int num(int c);
 int oprand(int p, int q);
 
 
-/*
-typedef struct stack
-{
-    char val[32][32];
-    int topid;
-} Stack;
-int pri(char arg)
-{
-    if (arg == '-' || arg == '+')
-    {
-        return 1;
-    }
-    else if (arg == '/' || arg == '*')
-    {
-        return 2;
-    }
-    else
-        return 0;
-}
-void push(Stack *L, char *e)
-{
-    if (L->topid == 32 - 1)
-    {
-        return;
-    }
-    L->topid++;
-    for (int i = 0; i < strlen(e); ++i)
-    {
-
-        L->val[L->topid][i] = e[i];
-    }
-    L->val[L->topid][strlen(e)] = e[strlen(e)];
-}
-int oper(char *p)
-{
-    if (p[0] == '+' || p[0] == '-' || p[0] == '*' || p[0] == '/')
-    {
-        return 1;
-    }
-    return 0;
-}
-void pop(Stack *L)
-{
-    if (L->topid == -1)
-    {
-        return;
-    }
-    L->topid--;
-}
-
-int empty(Stack *s)
-{
-    if (s->topid != -1)
-    {
-        return 0;
-    }
-    return 1;
-}
-void calu(Stack *l, char *p)
-{
-    char *a1 = l->val[l->topid];
-    pop(l);
-    char *a2 = l->val[l->topid];
-    pop(l);
-    float op1;
-    float op2;
-    sscanf(a1, "%f", &op1);
-    sscanf(a2, "%f", &op2);
-	//printf("%f,%f\n",op2,op1);
-	//printf("%s,%s\n",a2,a1);
-    char s[32];
-    if (p[0] == '+')
-    {
-
-        sprintf(s, "%f", op2 + op1);
-        push(l, s);
-    }
-    else if (p[0] == '-')
-    {
-
-        sprintf(s, "%f", op2 - op1);
-        push(l, s);
-    }
-    else if (p[0] == '/')
-    {
-
-        sprintf(s, "%f", op2 / op1);
-        push(l, s);
-    }
-    else if (p[0] == '*')
-    {
-
-        sprintf(s, "%f", op2 * op1);
-        push(l, s);
-    }
-}
-*/
-
-
-
-
-
-
 
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT
@@ -271,71 +168,7 @@ word_t expr(char *e, bool *success) {
   //printf("%d\n",oprand(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
-    /*Stack operand;
-    operand.topid = -1;
-    Stack data;
-    data.topid = -1;
-    for (int i = 0; i < nr_token; i++)
-    {
 
-        if (tokens[i].type == TK_INT)
-        {
-            push(&data, tokens[i].str);
-        }
-        else if (tokens[i].type == '(')
-        {
-            push(&operand, tokens[i].str);
-        }
-        else if (tokens[i].type == ')')
-        {
-            while (!empty(&operand) && operand.val[operand.topid][0] != '(')
-            {
-                push(&data, operand.val[operand.topid]);
-                pop(&operand);
-            }
-
-            pop(&operand);
-        }
-        else if (empty(&operand))
-        {
-            push(&operand, tokens[i].str);
-        }
-        else if (pri(operand.val[operand.topid][0]) < pri(tokens[i].type))
-        {
-            push(&operand, tokens[i].str);
-        }
-        else
-        {
-            while (!empty(&operand) && pri(operand.val[operand.topid][0]) >=pri(tokens[i].type))
-            {
-                push(&data, operand.val[operand.topid]);
-                pop(&operand);
-            }
-            push(&operand, tokens[i].str);
-        }
-    }
-    while (!empty(&data))
-    {
-        push(&operand, data.val[data.topid]);
-        pop(&data);
-    }
-
-    Stack result;
-    result.topid = -1;
-    while (!empty(&operand))
-    {
-        if (oper(operand.val[operand.topid]) == 0)
-        {
-            push(&result, operand.val[operand.topid]);
-            operand.topid--;
-        }
-        else
-        {
-            calu(&result, operand.val[operand.topid]);
-            operand.topid--;
-        }
-    }
-    printf("%s\n", result.val[result.topid]);*/
     printf("%u\n",eval(0,nr_token-1));
   return 0;
 }
@@ -454,7 +287,7 @@ uint32_t eval(int p, int q)
         int op = oprand(p, q);
         uint32_t val1 = eval(p, op - 1);
         uint32_t val2 = eval(op + 1, q);
-	printf("%c\n",tokens[op].type);
+	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
         {
         case '+':
