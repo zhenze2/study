@@ -72,16 +72,16 @@ void pop(Stack *L)
     {
         return;
     }
-    --L->topid;
+    L->topid--;
 }
 
 int empty(Stack *s)
 {
     if (s->topid != -1)
     {
-        return 1;
+        return 0;
     }
-    return 0;
+    return 1;
 }
 void calu(Stack *l, char *p)
 {
@@ -89,33 +89,35 @@ void calu(Stack *l, char *p)
     pop(l);
     char *a2 = l->val[l->topid];
     pop(l);
-    float op1, op2;
-    sscanf( a1,"%f", &op1);
-    sscanf( a2,"%f", &op2);
-    char sq[32];
+    float op1;
+    float op2;
+    sscanf(a1, "%f", &op1);
+    sscanf(a2, "%f", &op2);
+
+    char s[32];
     if (p[0] == '+')
     {
-        
-        sprintf(sq, "%f", op2 + op1);
-        push(l, sq);
+
+        sprintf(s, "%f", op2 + op1);
+        push(l, s);
     }
     else if (p[0] == '-')
     {
 
-        sprintf(sq, "%f", op2 - op1);
-        push(l, sq);
+        sprintf(s, "%f", op2 - op1);
+        push(l, s);
     }
     else if (p[0] == '/')
     {
 
-        sprintf(sq, "%f", op2 / op1);
-        push(l, sq);
+        sprintf(s, "%f", op2 / op1);
+        push(l, s);
     }
     else if (p[0] == '*')
     {
 
-        sprintf(sq, "%f", op2 * op1);
-        push(l, sq);
+        sprintf(s, "%f", op2 * op1);
+        push(l, s);
     }
 }
 
@@ -266,8 +268,9 @@ word_t expr(char *e, bool *success) {
     operand.topid = -1;
     Stack data;
     data.topid = -1;
-    for (int i = 0; i <= 32; i++)
+    for (int i = 0; i <= 4; i++)
     {
+
         if (tokens[i].type == TK_INT)
         {
             push(&data, tokens[i].str);
@@ -280,7 +283,7 @@ word_t expr(char *e, bool *success) {
         {
             while (!empty(&operand) && operand.val[operand.topid][0] != '(')
             {
-                push(&operand, operand.val[operand.topid]);
+                push(&data, operand.val[operand.topid]);
                 pop(&operand);
             }
 
@@ -290,13 +293,13 @@ word_t expr(char *e, bool *success) {
         {
             push(&operand, tokens[i].str);
         }
-        else if (pri(tokens[i].type) < pri(tokens[i].type))
+        else if (pri(operand.val[operand.topid][0]) < pri(tokens[i].type))
         {
             push(&operand, tokens[i].str);
         }
         else
         {
-            while (!empty(&operand) && pri(tokens[i].type) >= pri(tokens[i].type))
+            while (!empty(&operand) && pri(operand.val[operand.topid][0]) >=pri(tokens[i].type))
             {
                 push(&data, operand.val[operand.topid]);
                 pop(&operand);
@@ -309,16 +312,12 @@ word_t expr(char *e, bool *success) {
         push(&operand, data.val[data.topid]);
         pop(&data);
     }
-    while (!empty(&operand))
-    {
-        printf("%s", operand.val[operand.topid]);
-        pop(&operand);
-    }
+
     Stack result;
     result.topid = -1;
-    while (empty(&operand) != 0)
+    while (!empty(&operand))
     {
-        if (oper(operand.val[operand.topid]))
+        if (oper(operand.val[operand.topid]) == 0)
         {
             push(&result, operand.val[operand.topid]);
             operand.topid--;
@@ -326,11 +325,9 @@ word_t expr(char *e, bool *success) {
         else
         {
             calu(&result, operand.val[operand.topid]);
+            operand.topid--;
         }
     }
-    
-    double re;
-    sscanf("%f",result.val[result.topid],&re);
-    printf("%f\n",re);
+    printf("%s\n", result.val[result.topid]);
   return 0;
 }
