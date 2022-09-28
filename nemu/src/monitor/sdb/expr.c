@@ -454,7 +454,7 @@ uint32_t eval(int p, int q)
         int op = oprand(p, q);
         uint32_t val1 = eval(p, op - 1);
         uint32_t val2 = eval(op + 1, q);
-	printf("%c\n",op);
+	printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
         {
         case '+':
