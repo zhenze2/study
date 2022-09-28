@@ -426,7 +426,7 @@ int num(int c)
 }
 uint32_t eval(int p, int q)
 {
-    if (p > q || check_parentheses(p, q) == 0)
+    if (p > q)
     {
         printf("This is a bad expression");
         /* Bad expression */
