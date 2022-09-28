@@ -388,7 +388,7 @@ int oprand(int p, int q)
                     break;
                 }
             }
-            for (int j = p; j > i; j--)
+            for (int j = q; j > i; j--)
             {
                 if (tokens[j].type == ')')
                 {
