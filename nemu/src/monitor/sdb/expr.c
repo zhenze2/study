@@ -405,6 +405,7 @@ int oprand(int p, int q)
             }
         }
     }
+    printf("%c\n",tokens[result].type);
     return result;
 }
 
