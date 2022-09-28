@@ -21,7 +21,7 @@
 #include <regex.h>
 
 
-
+int check_parentness(int left, int right);
 
 
 
@@ -227,9 +227,7 @@ static bool make_token(char *e) {
         case ')':
         {
             tokens[nr_token].type = rules[i].token_type;
-            tokens[nr_token].str[0]=rules[i].token_type;
-          if(tokens[nr_token].type=='(')
-         {printf("yes\n");}
+            //tokens[nr_token].str[0]=rules[i].token_type;
             nr_token++;
             break;
         }
@@ -269,6 +267,7 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
+  printf("%d\n",check_parentness(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
@@ -337,4 +336,32 @@ word_t expr(char *e, bool *success) {
     }
     printf("%s\n", result.val[result.topid]);*/
   return 0;
+}
+
+
+int op[32] __attribute__((used))={};
+int check_parentness(int left, int right)
+{
+    int top = -1;
+    for (int i = left; i <= right; i++)
+    {
+        if (tokens[i].type == '(')
+        {
+            top++;
+            op[top] = '(';
+        }
+        if (tokens[i].type == ')')
+        {
+            op[top]=-1;
+            top--;
+        }
+    }
+    if (top == -1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
