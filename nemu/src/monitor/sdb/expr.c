@@ -213,8 +213,7 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          * have done
          */
-         if(rules[i].token_type=='(')
-         {printf("yes\n");}
+
         switch (rules[i].token_type)
         {
         case TK_NOTYPE:
@@ -229,6 +228,8 @@ static bool make_token(char *e) {
         {
             tokens[nr_token].type = rules[i].token_type;
             tokens[nr_token].str[0]=rules[i].token_type;
+          if(tokens[nr_token].type=='(')
+         {printf("yes\n");}
             nr_token++;
             break;
         }
