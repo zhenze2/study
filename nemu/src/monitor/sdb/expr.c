@@ -404,7 +404,7 @@ int oprand(int p, int q)
             }
         }
     }
-    return 1;
+    return result;
 }
 
 int num(int c)
