@@ -268,7 +268,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   //printf("%d\n",check_parentness(0,nr_token-1)); right#
-  printf("%d\n",oprand(0,7));
+  printf("%d\n",oprand(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
     /*Stack operand;
