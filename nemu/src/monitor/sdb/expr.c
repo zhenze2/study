@@ -326,6 +326,7 @@ word_t expr(char *e, bool *success) {
         else
         {
             calu(&result, operand.val[operand.topid]);
+            printf("%s\n", result.val[result.topid]);
             operand.topid--;
         }
     }
