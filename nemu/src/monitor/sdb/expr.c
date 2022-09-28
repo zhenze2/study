@@ -422,7 +422,7 @@ int num(int c)
     default:
         break;
     }
-    return 0;
+    return 10;
 }
 uint32_t eval(int p, int q)
 {
