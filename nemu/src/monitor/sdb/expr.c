@@ -380,6 +380,8 @@ int oprand(int p, int q)
         {
             int a = 0;
             int b = 0;
+            printf("%c\n",tokens[result].type);
+            printf("%c\n",tokens[i].type);
             for (int j = result; j < i; j++)
             {
                 if (tokens[j].type == '(')
