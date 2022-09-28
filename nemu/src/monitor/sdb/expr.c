@@ -264,6 +264,7 @@ word_t expr(char *e, bool *success) {
   }
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
+  printf("%d\n",nr_token);
     Stack operand;
     operand.topid = -1;
     Stack data;
