@@ -26,7 +26,7 @@
 
 
 
-
+/*
 typedef struct stack
 {
     char val[32][32];
@@ -122,7 +122,7 @@ void calu(Stack *l, char *p)
         push(l, s);
     }
 }
-
+*/
 
 
 
@@ -213,6 +213,8 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          * have done
          */
+         if(rules[i].token_type=='(')
+         {printf("yes\n");}
         switch (rules[i].token_type)
         {
         case TK_NOTYPE:
@@ -222,6 +224,8 @@ static bool make_token(char *e) {
         case '-':
         case '*':
         case '/':
+        case '(':
+        case ')':
         {
             tokens[nr_token].type = rules[i].token_type;
             tokens[nr_token].str[0]=rules[i].token_type;
@@ -266,8 +270,7 @@ word_t expr(char *e, bool *success) {
   }
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
-  printf("%d\n",nr_token);
-    Stack operand;
+    /*Stack operand;
     operand.topid = -1;
     Stack data;
     data.topid = -1;
@@ -331,6 +334,6 @@ word_t expr(char *e, bool *success) {
             operand.topid--;
         }
     }
-    printf("%s\n", result.val[result.topid]);
+    printf("%s\n", result.val[result.topid]);*/
   return 0;
 }
