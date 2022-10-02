@@ -304,6 +304,8 @@ uint32_t eval(int p, int q)
             return val1 * val2;
         case '/':
             return val1 / val2;
+        case TK_EQ:
+            return val1 == val2;
         default:
             assert(0);
         }
