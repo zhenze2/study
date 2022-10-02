@@ -144,6 +144,14 @@ static bool make_token(char *e) {
                 nr_token++;
                 break;
         }
+        case TK_HEX:
+            tokens[nr_token].type = rules[i].token_type;
+            for (int l = 0; l < substr_len;l++){
+                tokens[nr_token].str[l]=substr_start[l];
+                } 
+                //printf("%s\n",tokens[nr_token].str);
+                nr_token++;
+                break;
     
           default: TODO();
 
