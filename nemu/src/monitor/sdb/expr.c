@@ -53,7 +53,7 @@ static struct rule {
   {"\\(", '('},
   {"\\)", ')'},
   {"[0-9]+", TK_INT},
-  {"0x[0-9a-zA-Z]+",TK_HEX},
+  {"0x[0-9]+",TK_HEX},
   {"!=",TK_INEQ},
   {"&&",TK_AND},
   {"\\$[0-9a-zA-Z]+",TK_REG},
