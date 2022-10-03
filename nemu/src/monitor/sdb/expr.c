@@ -24,7 +24,7 @@ uint32_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
-
+int have(int p,int q);
 
 
 enum {
@@ -329,7 +329,7 @@ uint32_t eval(int p, int q)
         }
         return data;
     }
-    else if (check_parentheses(p, q) == 1)
+    else if (check_parentheses(p, q) == 1&&have(p,q)==0)
     {
         /* The expression is surrounded by a matched pair of parentheses.
          * If that is the case, just throw away the parentheses.
@@ -380,6 +380,13 @@ uint32_t eval(int p, int q)
         default:
             assert(1);
         }
+    }
+    return 0;
+}
+int have(int p,int q){
+    for (int i = p + 1;i < q;i++){
+        if(tokens[i].type=='('||tokens[i].type==')')
+            return 1;
     }
     return 0;
 }
