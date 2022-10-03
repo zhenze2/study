@@ -99,7 +99,8 @@ static int cmd_x(char *args) {
 
 static int cmd_p(char *args) {
 	//printf("p EXPR_%s\n", args);
-	printf("%u\n",expr(args,false));
+	char *arg=strtok(NULL," ");
+	printf("%u\n",expr(arg,false));
   return 0;
 }
 
@@ -114,7 +115,10 @@ static int cmd_w(char *args) {
 }
 
 static int cmd_d(char *args) {
-	printf("d N\n");
+	//printf("d N\n");
+	int N;
+	sscanf(strtok(NULL, " "),"%d",&N);
+	
   return 0;
 }
 
