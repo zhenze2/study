@@ -373,7 +373,7 @@ uint32_t eval(int p, int q)
         case TK_NOBIGGER:
             return val1<=val2;
         default:
-            assert(0);
+            assert(1);
         }
     }
     return 0;
