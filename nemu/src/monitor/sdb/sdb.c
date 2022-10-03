@@ -105,6 +105,10 @@ static int cmd_p(char *args) {
 
 static int cmd_w(char *args) {
 	printf("w EXPR\n");
+	WP *new=new_wp();
+	new->exp=args;
+	new->past_val=expr(args,false);
+	new->now_val=expr(args,false);
   return 0;
 }
 
