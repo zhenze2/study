@@ -107,8 +107,8 @@ static int cmd_w(char *args) {
 	printf("%s\n",args);
 	WP *new=new_wp();
 	new->exp=args;
-	new->past_val=expr(args,false);
-	new->now_val=expr(args,false);
+	new->past_val=1;
+	new->now_val=1;
   return 0;
 }
 
