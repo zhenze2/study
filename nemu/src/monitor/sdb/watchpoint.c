@@ -60,8 +60,8 @@ void free_wp(int N){
 		wp=head_f->next;
 		head_f=head_f->next->next;
 		break;
-							}	
-								}
+					}	
+				}
 		}
     WP* temp=free_;
     while(temp->next!=NULL){
