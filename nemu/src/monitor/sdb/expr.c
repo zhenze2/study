@@ -286,7 +286,7 @@ int num(int c)
 {
     switch (c)
     {
-    case DEREF:
+    case DEREF:case MINUS:
     	return 6;
     case '+':
     case '-':
