@@ -81,6 +81,7 @@ void wp_display(){
 		printf("NO\tvalue\texpression\n");
 		while(temp!=NULL){
 		printf("%d\t%u\t%s\n",temp->NO,temp->now_val,temp->exp);
+		temp=temp->next;
 		}
 	}
 }
