@@ -390,5 +390,6 @@ int have(int p,int q){
             return 1;
             
     }
+     printf("nohave\n");
     return 0;
 }
