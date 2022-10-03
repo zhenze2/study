@@ -385,7 +385,7 @@ uint32_t eval(int p, int q)
         case MINUS:
             return -val2;
         default:
-            assert(1);
+            assert(0);
         }
     }
     return 0;
