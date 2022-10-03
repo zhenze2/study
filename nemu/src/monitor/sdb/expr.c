@@ -56,8 +56,8 @@ static struct rule {
   {"!=",TK_INEQ},       //inequal
   {"&&",TK_AND},	//and
   {"\\|\\|",TK_OR},	//or
-  {"<=",TK_NOLESS},	//no less
-  {">=",TK_NOBIGGER},	//no bigger
+  {">=",TK_NOLESS},	//no less
+  {"<=",TK_NOBIGGER},	//no bigger
   {"^(0x)[0-9a-zA-Z]+",TK_HEX},
   {"^[0-9]+", TK_INT},
   {"^\\$[\\$0-9a-zA-Z]+",TK_REG},
@@ -347,6 +347,12 @@ uint32_t eval(int p, int q)
             return val1 != val2;
         case TK_AND:
             return val1 && val2;
+        case TK_OR:
+            return val1||val2;
+        case TK_NOLESS:
+            return val1>=val2;
+        case TK_NOBIGGER:
+            return val1<=val2;
         default:
             assert(0);
         }
