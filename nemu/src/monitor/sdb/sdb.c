@@ -112,7 +112,7 @@ static int cmd_w(char *args) {
 	/*for(int i=0;i<strlen(args);i++){
 	new->exp[i]=args[i];
 	}*/
-	strcpy(new->exp,args);
+	new->exp=args;
 	new->now_val=expr(args,false);
 	printf("watchpoint %d: %s\n",new->NO,new->exp);
   return 0;
