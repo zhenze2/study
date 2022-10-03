@@ -86,7 +86,7 @@ static int cmd_x(char *args) {
 	if(i%4==0){
 	printf("0x%08x:\t", sec);
 	}
-	printf("0x%08x\t\n", paddr_read(sec,4));
+	printf("0x%08x\t", paddr_read(sec,4));
 	sec+=4;
 	}
 	printf("\n");
