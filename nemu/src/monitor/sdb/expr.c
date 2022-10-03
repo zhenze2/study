@@ -295,10 +295,12 @@ uint32_t eval(int p, int q)
         if(tokens[p].type==TK_REG){
             data=isa_reg_str2val(tokens[p].str,false);
         }
-        else{
-         sscanf(tokens[p].str, "%u", &data);
+        else if(tokens[p].type==TK_HEX){
+           ;
         }
-
+        else{
+        sscanf(tokens[p].str, "%u", &data);
+        }
         return data;
     }
     else if (check_parentheses(p, q) == 1)
