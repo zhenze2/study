@@ -43,9 +43,8 @@ void init_wp_pool() {
 }
 WP* new_wp(){
   WP* temp=free_;
-  while(temp->next!=NULL){
-  	temp=temp->next;
-  }
+  if(free_->next!=NULL)
+  {free_=free_->next;}
   return temp;
 }
 void free_wp(WP *wp);
