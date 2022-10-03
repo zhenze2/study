@@ -109,7 +109,7 @@ static int cmd_w(char *args) {
 	new->exp=args;
 	new->past_val=expr(args,false);
 	new->now_val=expr(args,false);
-	printf("watchpoint %d: %s",new->NO,new->exp);
+	printf("watchpoint %d: %s\n",new->NO,new->exp);
   return 0;
 }
 
