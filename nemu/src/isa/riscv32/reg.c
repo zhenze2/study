@@ -41,10 +41,11 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   		flag*=0;
 	   	 break;
 	   	}
-	   if(flag==1){
+
+	   }
+	  if(flag==1){
 	       data=cpu.gpr[i];
 	   break;
-	   }
 	   }
 	   	   
 	}
