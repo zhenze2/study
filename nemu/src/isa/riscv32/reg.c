@@ -42,7 +42,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	}
 	   if(flag==1){
 	       data=cpu.gpr[i];
-	       break;
+	   break;
 	   }
 	   	   
 	}
