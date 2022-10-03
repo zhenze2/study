@@ -55,19 +55,8 @@ void free_wp(WP *wp){
        temp=temp->next;
     }
 }
-/*void set_exp(char* args,WP* wp){
-wp->exp=args;}
-void set_pastv(word_t args,WP* wp){
-wp->past_val=args;}
-void set_nowv(word_t args,WP* wp){
-wp->now_val=args;}
-int getNO(WP *wp){return wp->NO;}
-void set_wp(char* args){
-	WP* new=new_wp();
-	new->exp=args;
-	new->past_val=expr(args,false);
-	new->now_val=expr(args,false);
-	printf("%d",new->NO);
-}*/
+WP* gethead(){
+	return head;
+}
 /* TODO: Implement the functionality of watchpoint */
 

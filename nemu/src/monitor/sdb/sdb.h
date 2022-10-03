@@ -26,12 +26,8 @@ typedef struct watchpoint {
   /* TODO: Add more members if necessary */
 
 } WP;
+WP* gethead();
 WP* new_wp();
 void free_wp(WP *wp);
 word_t expr(char *e, bool *success);
-/*void set_exp(char* args,WP* wp);
-void set_pastv(word_t args,WP* wp);
-void set_nowv(word_t args,WP* wp);
-int getNO(WP *wp);
-void set_wp(char* args);*/
 #endif
