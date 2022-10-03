@@ -36,8 +36,8 @@ word_t isa_reg_str2val(const char *s, bool *success) {
      	for(int i=0;i<32;i++){
 	if(strlen(regs[i])==len){
 	   for(int l=0;l<len;l++){
-	   printf("%c\t%c\t%d\n",s[l],regs[i][l],s[l]!=regs[i][l]);
 	   	{if(s[l]!=regs[i][l])
+	   	printf("%c\t%c\t%d\n",s[l],regs[i][l],s[l]!=regs[i][l]);
 	   		flag*=0;
 	   	 break;
 	   	}
