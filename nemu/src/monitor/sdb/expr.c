@@ -186,7 +186,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   //printf("%d\n",check_parentness(0,nr_token-1)); right#
-  printf("%d\n",oprand(0,nr_token-1));
+  //printf("%d\n",oprand(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
 
@@ -230,7 +230,7 @@ int oprand(int p, int q)
     int result = p;
     for (int i = p; i <= q; i++)
     {
-        if (tokens[i].type!=TK_INT)
+        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_POINT&&tokens[i].type!=TK_HEX)
         {
             int a = 0;
             int b = 0;
@@ -292,7 +292,13 @@ uint32_t eval(int p, int q)
          * Return the value of the number.
          */
         uint32_t data;
-        sscanf(tokens[p].str, "%u", &data);
+        if(tokens[p].type==TK_REG){
+            data=isa_reg_str2val(tokens[p].str,false);
+        }
+        else{
+         sscanf(tokens[p].str, "%u", &data);
+        }
+
         return data;
     }
     else if (check_parentheses(p, q) == 1)
