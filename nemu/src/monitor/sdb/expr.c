@@ -298,7 +298,7 @@ int num(int c)
     case TK_OR:
     	return 0;
     default:
-        return -1;
+        break;
     }
     return 10;
 }
