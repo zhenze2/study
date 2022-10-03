@@ -111,7 +111,8 @@ static int cmd_w(char *args) {
 	set_pastv(expr(args,false),new);
 	set_nowv(expr(args,false),new);
 	printf("%u\n",getNO(new));*/
-	set_wp(args);
+	//set_wp(args);
+	new_wp();
   return 0;
 }
 
