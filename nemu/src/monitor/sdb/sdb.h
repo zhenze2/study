@@ -33,4 +33,5 @@ void set_exp(char* args,WP* wp);
 void set_pastv(word_t args,WP* wp);
 void set_nowv(word_t args,WP* wp);
 int getNO(WP *wp);
+void set_wp(char* args);
 #endif
