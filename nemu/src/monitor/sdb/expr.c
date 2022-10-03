@@ -293,7 +293,7 @@ uint32_t eval(int p, int q)
          */
         uint32_t data;
         if(tokens[p].type==TK_REG){
-            data=isa_reg_str2val(tokens[p].str,false);
+            return isa_reg_str2val(tokens[p].str,false);
         }
         else if(tokens[p].type==TK_HEX){
            ;
