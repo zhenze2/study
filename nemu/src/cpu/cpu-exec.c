@@ -47,6 +47,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
       if(head_to_use->now_val!=past_val){
       nemu_state.state=NEMU_STOP;
       }
+      head_to_use=head_to_use->next;
   }
   
   
