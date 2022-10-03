@@ -107,12 +107,9 @@ static int cmd_w(char *args) {
 	//expr(args,false)
 	WP *new=new_wp();
 	new->exp=args;
-	//assert(0);
-	/*set_exp(args,new);
-	set_pastv(expr(args,false),new);
-	set_nowv(expr(args,false),new);
-	printf("%u\n",getNO(new));*/
-	//set_wp(args);
+	new->past_val=expr(args,false);
+	new->now_val=expr(args,false);
+	printf("%u\n",new->NO);
   return 0;
 }
 
