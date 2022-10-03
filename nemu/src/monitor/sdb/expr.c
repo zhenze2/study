@@ -341,8 +341,8 @@ uint32_t eval(int p, int q)
         /* We should do more things here. */
         int op = oprand(p, q);
         int left,right;
-        left=p-1;
-        right=q-1;
+        left=op+1;
+        right=op-1;
         if(tokens[op-1].type==')')
         {right--;}
          if(tokens[op+1].type=='(')
