@@ -30,7 +30,7 @@ void isa_reg_display() {
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
-     	word_t data=0;
+     	word_t data=1;
      	int len=strlen(s);
      	int flag=0;
      	//bool a=true;
