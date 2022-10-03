@@ -275,12 +275,15 @@ int num(int c)
     {
     case '+':
     case '-':
-        return 3;
+        return 4;
     case '*':
     case '/':
-        return 4;
+        return 5;
     case TK_NOLESS:
     case TK_NOBIGGER:
+    	return 3;
+    case TK_EQ:
+    case TK_INEQ:
     	return 2;
     case TK_AND:
     	return 1;
