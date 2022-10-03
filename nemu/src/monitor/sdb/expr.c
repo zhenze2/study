@@ -20,7 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/paddr.h"
-int eval(int p, int q);
+uint32_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
@@ -29,7 +29,7 @@ int oprand(int p, int q);
 
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,DEREF,TK_HEX,TK_REG,
-  TK_NOLESS,TK_NOBIGGER,TK_OR,MINUS
+  TK_NOLESS,TK_NOBIGGER,TK_OR
 
   /* TODO: Add more token types ,have done*/
 
@@ -203,14 +203,7 @@ word_t expr(char *e, bool *success) {
             tokens[i].type = DEREF;
         }
     }
-    for (int i = 0; i < nr_token; i++)
-    {
-        if (tokens[i].type == '-' && (i == 0 || tokens[i - 1].type=='+'||tokens[i - 1].type=='-'||tokens[i - 1].type=='*'||tokens[i - 1].type=='/'))
-        {
-            tokens[i].type = DEREF;
-        }
-    }
-   //printf("%u\n",eval(0,nr_token-1));
+    //printf("%u\n",eval(0,nr_token-1));
   return eval(0,nr_token-1);
 }
 
@@ -286,7 +279,7 @@ int num(int c)
 {
     switch (c)
     {
-    case DEREF:case MINUS:
+    case DEREF:
     	return 6;
     case '+':
     case '-':
@@ -309,7 +302,7 @@ int num(int c)
     }
     return 10;
 }
-int eval(int p, int q)
+uint32_t eval(int p, int q)
 {
     if (p > q)
     {
@@ -322,7 +315,7 @@ int eval(int p, int q)
          * For now this token should be a number.
          * Return the value of the number.
          */
-        int data;
+        uint32_t data;
         if(tokens[p].type==TK_REG){
             return isa_reg_str2val(tokens[p].str,false);
         }
@@ -331,7 +324,7 @@ int eval(int p, int q)
            sscanf(tokens[p].str,"%x",&data);
         }
         else{
-        sscanf(tokens[p].str, "%d", &data);
+        sscanf(tokens[p].str, "%u", &data);
         }
         return data;
     }
@@ -346,16 +339,13 @@ int eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        int val1=0;
-        int val2=0;
+        uint32_t val1=0;
+        uint32_t val2=0;
         if(tokens[op].type!=DEREF)
         {
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);}
-        else if(tokens[op].type==MINUS){
-        	val2=eval(op+1,q);
-        }else
-        {
+        else{
         val2=eval(op+1,q);}
 	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
@@ -364,12 +354,12 @@ int eval(int p, int q)
             return val1 + val2;
         case '-':
             return val1 - val2;
+        case DEREF:
+            return paddr_read(val2,4);
         case '*':
             return val1 * val2;
         case '/':
             return val1 / val2;
-        case DEREF:
-            return paddr_read(val2,4);
         case TK_EQ:
             return val1 == val2;
         case TK_INEQ:
@@ -382,10 +372,8 @@ int eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
-        case MINUS:
-            return -val2;
         default:
-            assert(0);
+            assert(1);
         }
     }
     return 0;
