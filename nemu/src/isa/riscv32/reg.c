@@ -32,7 +32,9 @@ void isa_reg_display() {
 word_t isa_reg_str2val(const char *s, bool *success) {
      	word_t data=1;
      	for(int i=0;i<32;i++){
-     	printf("%s\t%s\t%d\t%u\n",s,regs[i],regs[1]==s,cpu.gpr[i]);
+     	char *p= malloc(sizeof(char));
+     	sscanf(regs[i],"%s",p);
+     	printf("%s\t%s\t%d\t%u\n",s,regs[i],p==s,cpu.gpr[i]);
 	if(regs[i]==s){
 	data=cpu.gpr[i];
 	break;
