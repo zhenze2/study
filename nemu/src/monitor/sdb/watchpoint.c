@@ -78,9 +78,9 @@ void wp_display(){
 	}
 	else{
 		WP *temp=head;
-		printf("NO\tvalue\texpression\n");
+		printf("NO\t\tvalue\t\texpression\n");
 		while(temp!=NULL){
-		printf("%d\t%u\t%s\n",temp->NO,temp->now_val,temp->exp);
+		printf("%d\t\t%u\t\t%s\n",temp->NO,temp->now_val,temp->exp);
 		temp=temp->next;
 		}
 	}
