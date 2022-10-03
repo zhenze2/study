@@ -33,6 +33,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
      	word_t data;
      	int len=strlen(s);
      	int flag=0;
+     	bool a=true;
      	for(int i=0;i<32;i++){
 	if(strlen(regs[i])==len){
 	   for(int l=0;l<len;l++){
@@ -42,7 +43,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	}
 	  if(flag==len){
 	       data=cpu.gpr[i];
-	       *success=true;
+	       success=&a;
 	   break;
 	   }
 
