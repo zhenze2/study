@@ -28,7 +28,8 @@ int oprand(int p, int q);
 
 
 enum {
-  TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,TK_POINT,TK_HEX,TK_REG
+  TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,TK_POINT,TK_HEX,TK_REG,
+  TK_NOLESS,TK_NOBIGGER,TK_OR
 
   /* TODO: Add more token types ,have done*/
 
@@ -54,6 +55,9 @@ static struct rule {
   {"\\)", ')'},
   {"!=",TK_INEQ},       //inequal
   {"&&",TK_AND},	//and
+  {"\\|\\|",TK_OR},	//or
+  {"<=",TK_NOLESS},	//no less
+  {">=",TK_NOBIGGER},	//no bigger
   {"^(0x)[0-9a-zA-Z]+",TK_HEX},
   {"^[0-9]+", TK_INT},
   {"^\\$[\\$0-9a-zA-Z]+",TK_REG},
@@ -122,6 +126,9 @@ static bool make_token(char *e) {
         case TK_EQ:
         case TK_INEQ:
         case TK_AND:
+        case TK_NOLESS:
+        case TK_NOBIGGER:
+        case TK_OR:
         case '+':
         case '-':
         case '*':
@@ -268,11 +275,17 @@ int num(int c)
     {
     case '+':
     case '-':
-        return 0;
+        return 3;
     case '*':
     case '/':
-        return 1;
-
+        return 4;
+    case TK_NOLESS:
+    case TK_NOBIGGER:
+    	return 2;
+    case TK_AND:
+    	return 1;
+    case TK_OR:
+    	return 0;
     default:
         break;
     }
