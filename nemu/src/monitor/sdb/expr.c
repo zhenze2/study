@@ -20,7 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/paddr.h"
-uint32_t eval(int p, int q);
+int eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
@@ -309,7 +309,7 @@ int num(int c)
     }
     return 10;
 }
-uint32_t eval(int p, int q)
+int eval(int p, int q)
 {
     if (p > q)
     {
@@ -322,7 +322,7 @@ uint32_t eval(int p, int q)
          * For now this token should be a number.
          * Return the value of the number.
          */
-        uint32_t data;
+        int data;
         if(tokens[p].type==TK_REG){
             return isa_reg_str2val(tokens[p].str,false);
         }
@@ -331,7 +331,7 @@ uint32_t eval(int p, int q)
            sscanf(tokens[p].str,"%x",&data);
         }
         else{
-        sscanf(tokens[p].str, "%u", &data);
+        sscanf(tokens[p].str, "%d", &data);
         }
         return data;
     }
@@ -346,8 +346,8 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        uint32_t val1=0;
-        uint32_t val2=0;
+        int val1=0;
+        int val2=0;
         if(tokens[op].type!=DEREF)
         {
         val1 = eval(p, op - 1);
