@@ -33,7 +33,7 @@ void init_wp_pool() {
 }
 WP* new_wp(){
   WP* temp=free_;
-  assert(free_!=NULL);
+  //assert(free_!=NULL);
   if(free_!=NULL)
   {free_=free_->next;}
   WP* head_temp=head;
