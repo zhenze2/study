@@ -18,8 +18,8 @@
 #define NR_WP 32
 
 
-WP wp_pool[NR_WP] = {};
-WP *head = NULL, *free_ = NULL;
+static WP wp_pool[NR_WP] = {};
+static WP *head = NULL, *free_ = NULL;
 
 void init_wp_pool() {
   int i;
@@ -36,8 +36,9 @@ WP* new_wp(){
   //assert(free_!=NULL);
   if(free_!=NULL)
   {free_=free_->next;}
+  if(head==NULL){head=temp;temp->next=NULL;}
   WP* head_temp=head;
-    while(head_temp->next!=NULL){
+    while(head_temp!=NULL){
        if(head_temp->next==NULL){head_temp->next=temp;
        temp->next=NULL;
        break;}
@@ -63,10 +64,10 @@ wp->now_val=args;}
 int getNO(WP *wp){return wp->NO;}
 void set_wp(char* args){
 	WP* new=new_wp();
+	new->exp=args;
+	new->past_val=expr(args,false);
+	new->now_val=expr(args,false);
 	printf("%d",new->NO);
-	//new->exp=args;
-	//new->past_val=expr(args,false);
-	//new->now_val=expr(args,false);
 }
 /* TODO: Implement the functionality of watchpoint */
 
