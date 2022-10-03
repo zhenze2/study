@@ -40,7 +40,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
   
   //add the message of watchpoints by hutao
-  nemu_state.state=NEMU_STOP;
+  //nemu_state.state=NEMU_STOP;
   WP *head_to_use=gethead();
   while(head_to_use!=NULL){
       word_t past_val=head_to_use->now_val;
