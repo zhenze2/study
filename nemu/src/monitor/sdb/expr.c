@@ -211,15 +211,15 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentheses(int left, int right)
 {
-    int ans=0;
+    //int ans=0;
     if (tokens[left].type == '(' && tokens[right].type != ')')
     {
-        ans=1;
+        return 1;
     }
     else{
     return 0;
     }
-    int top = -1;
+    /*int top = -1;
     for (int i = left; i <= right; i++)
     {
         if (tokens[i].type == '(')
@@ -241,7 +241,7 @@ int check_parentheses(int left, int right)
     {
         ans=1;
     }
-    return ans;
+    return ans;*/
     
 }
 int oprand(int p, int q)
