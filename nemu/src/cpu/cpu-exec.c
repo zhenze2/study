@@ -47,6 +47,7 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
       head_to_use->now_val=expr(head_to_use->exp,false);
       if(head_to_use->now_val!=past_val){
       nemu_state.state=NEMU_STOP;
+      // if changed print the message of it
       printf("STOP: past_val: %u\tnow_val: %u\n",past_val,head_to_use->now_val);
       }
       head_to_use=head_to_use->next;
