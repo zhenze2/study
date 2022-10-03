@@ -108,10 +108,11 @@ static int cmd_p(char *args) {
 
 static int cmd_w(char *args) {
 	WP *new=new_wp();
-	new->exp=strtok(NULL,"");
+	//new->exp=strtok(NULL,"");
 	/*for(int i=0;i<strlen(args);i++){
 	new->exp[i]=args[i];
 	}*/
+	strcpy(new->exp,args);
 	new->now_val=expr(args,false);
 	printf("watchpoint %d: %s\n",new->NO,new->exp);
   return 0;
