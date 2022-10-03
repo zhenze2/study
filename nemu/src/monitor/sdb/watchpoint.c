@@ -46,7 +46,21 @@ WP* new_wp(){
     }
   return temp;
 }
-void free_wp(WP *wp){
+void free_wp(int N){
+	WP* head_f=head;
+	WP *wp;
+	if(head_f->NO==N){
+		wp=head_f;
+		head=head->next;
+	}
+	while(head_f->next!=NULL){
+		//delete the NO N watchpoint
+		if(head_f->next->NO==N){
+		wp=head_f->next;
+		head_f=head_f->next->next;
+		break;
+	}	
+	}
     WP* temp=free_;
     while(temp->next!=NULL){
        if(temp->next==NULL){temp->next=wp;
@@ -57,6 +71,18 @@ void free_wp(WP *wp){
 }
 WP* gethead(){
 	return head;
+}
+void wp_display(){
+	if(head==NULL){
+	printf("There is no watch right now.\n");
+	}
+	else{
+		WP *temp=head;
+		printf("NO\tvalue\texpression\n");
+		while(temp!=NULL){
+		printf("%d\t%u\t%s\n",temp->NO,temp->now_val,temp->exp);
+		}
+	}
 }
 /* TODO: Implement the functionality of watchpoint */
 

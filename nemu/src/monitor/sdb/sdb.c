@@ -73,7 +73,9 @@ static int cmd_info(char *args) {
 	if(*arg=='r'){
 	isa_reg_display();
 	}
-	else if(*arg=='w'){}
+	else if(*arg=='w'){
+	wp_display();
+	}
   return 0;
 }
 
@@ -108,7 +110,6 @@ static int cmd_w(char *args) {
 	//expr(args,false)
 	WP *new=new_wp();
 	new->exp=args;
-	new->past_val=expr(args,false);
 	new->now_val=expr(args,false);
 	printf("watchpoint %d: %s\n",new->NO,new->exp);
   return 0;
@@ -118,6 +119,7 @@ static int cmd_d(char *args) {
 	//printf("d N\n");
 	int N;
 	sscanf(strtok(NULL, " "),"%d",&N);
+	free_wp(N);
 	
   return 0;
 }

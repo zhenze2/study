@@ -21,13 +21,13 @@ typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
   char *exp;
-  word_t past_val;
   word_t now_val;
   /* TODO: Add more members if necessary */
 
 } WP;
 WP* gethead();
 WP* new_wp();
-void free_wp(WP *wp);
+void free_wp(int);
 word_t expr(char *e, bool *success);
+void wp_display();
 #endif
