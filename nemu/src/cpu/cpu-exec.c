@@ -42,7 +42,10 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
   //add the message of watchpoints by hutao
   WP *head_to_use=gethead();
   while(head_to_use!=NULL){
-      ;
+      head_to_use->now_val=expr(head_to_use->exp,false);
+      if(head_to_use->now_val!=head_to_use->past_val){
+      nemu_state.state=NEMU_STOP;
+      }
   }
   
   
