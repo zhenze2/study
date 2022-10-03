@@ -34,7 +34,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
      	for(int i=0;i<32;i++){
      	char *p= malloc(sizeof(char));
      	sscanf(regs[i],"%s",p);
-     	printf("%s\t%s\t%d\t%u\n",s,regs[i],p==s,cpu.gpr[i]);
+     	printf("%s\t%s\t%d\t%u\n",s,p,p==s,cpu.gpr[i]);
 	if(regs[i]==s){
 	data=cpu.gpr[i];
 	break;
