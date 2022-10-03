@@ -386,7 +386,9 @@ uint32_t eval(int p, int q)
 int have(int p,int q){
     for (int i = p + 1;i < q;i++){
         if(tokens[i].type=='('||tokens[i].type==')')
+        printf("have\n");
             return 1;
+            
     }
     return 0;
 }
