@@ -296,8 +296,8 @@ uint32_t eval(int p, int q)
             return isa_reg_str2val(tokens[p].str,false);
         }
         else if(tokens[p].type==TK_HEX){
-           return strtol(tokens[p].str,NULL,16);
-           //sscanf(tokens[p].str,"%x",&data);
+           //return strtol(tokens[p].str,NULL,16);
+           sscanf(tokens[p].str,"%x",&data);
         }
         else{
         sscanf(tokens[p].str, "%u", &data);
