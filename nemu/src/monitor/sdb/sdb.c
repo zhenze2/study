@@ -106,10 +106,10 @@ static int cmd_p(char *args) {
 static int cmd_w(char *args) {
 	WP *new=new_wp();
 	//assert(0);
-	new->exp="1+2";
-	//new->past_val=1;
+	//new->exp="1+2";
+	new->past_val=1;
 	//new->now_val=1;
-	printf("%s\n",new->exp);
+	printf("%u\n",new->past_val);
   return 0;
 }
 
