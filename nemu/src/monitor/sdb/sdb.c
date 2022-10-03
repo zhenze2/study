@@ -103,17 +103,15 @@ static int cmd_p(char *args) {
 	//printf("p EXPR_%s\n", args);
 	char *arg=strtok(NULL,"");
 	printf("result: %u\n",expr(arg,false));
-	printf("%s\n",arg);
   return 0;
 }
 
 static int cmd_w(char *args) {
-	//char *arg=strtok(NULL,"");
 	WP *new=new_wp();
-	//new->exp=arg;
-	for(int i=0;i<strlen(args);i++){
+	new->exp=strtok(NULL,"");
+	/*for(int i=0;i<strlen(args);i++){
 	new->exp[i]=args[i];
-	}
+	}*/
 	new->now_val=expr(args,false);
 	printf("watchpoint %d: %s\n",new->NO,new->exp);
   return 0;
