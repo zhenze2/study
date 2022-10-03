@@ -62,8 +62,8 @@ void set_nowv(word_t args,WP* wp){
 wp->now_val=args;}
 int getNO(WP *wp){return wp->NO;}
 void set_wp(char* args){
-	WP* new=new_wp();
-	printf("%d",new->NO);
+	//WP* new=new_wp();
+	printf("%d",head->NO);
 	/*new->exp=args;
 	new->past_val=expr(args,false);
 	new->now_val=expr(args,false);*/
