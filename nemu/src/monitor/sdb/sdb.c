@@ -82,6 +82,7 @@ static int cmd_x(char *args) {
 	sscanf(strtok(NULL, " "),"%d",&fir);
 	uint32_t sec;
 	sscanf(strtok(NULL, " "),"%x",&sec);
+	printf("\n0x%08x:\t", sec);
 	/*for(int i=0;i<fir;i++){
 	if(i%4==0){
 	printf("\n0x%08x:\t", sec);
