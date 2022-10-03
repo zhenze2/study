@@ -152,6 +152,13 @@ static bool make_token(char *e) {
                 //printf("%s\n",tokens[nr_token].str);
                 nr_token++;
                 break;
+        case TK_REG:
+        	tokens[nr_token].type = rules[i].token_type;
+        	for(int l=0;l<substr_len-1;l++){
+        	tokens[nr_token].str[l]=substr_start[l+1];
+        	}
+        	nr_token++;
+        	break;
     
           default: TODO();
 
