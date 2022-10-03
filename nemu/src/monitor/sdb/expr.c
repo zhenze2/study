@@ -29,7 +29,7 @@ int oprand(int p, int q);
 
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,DEREF,TK_HEX,TK_REG,
-  TK_NOLESS,TK_NOBIGGER,TK_OR
+  TK_NOLESS,TK_NOBIGGER,TK_OR,MINUS
 
   /* TODO: Add more token types ,have done*/
 
@@ -203,7 +203,14 @@ word_t expr(char *e, bool *success) {
             tokens[i].type = DEREF;
         }
     }
-    //printf("%u\n",eval(0,nr_token-1));
+    for (int i = 0; i < nr_token; i++)
+    {
+        if (tokens[i].type == '-' && (i == 0 || tokens[i - 1].type=='+'||tokens[i - 1].type=='-'||tokens[i - 1].type=='*'||tokens[i - 1].type=='/'))
+        {
+            tokens[i].type = DEREF;
+        }
+    }
+   //printf("%u\n",eval(0,nr_token-1));
   return eval(0,nr_token-1);
 }
 
@@ -345,7 +352,10 @@ uint32_t eval(int p, int q)
         {
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);}
-        else{
+        else if(tokens[op].type==MINUS){
+        	val2=eval(op+1,q);
+        }else
+        {
         val2=eval(op+1,q);}
 	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
@@ -372,6 +382,8 @@ uint32_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
+        case MINUS:
+            return -val2;
         default:
             assert(1);
         }
