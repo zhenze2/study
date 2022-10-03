@@ -106,11 +106,12 @@ static int cmd_p(char *args) {
 static int cmd_w(char *args) {
 	//expr(args,false)
 	WP *new=new_wp();
+	new->exp=args;
 	//assert(0);
-	set_exp(args,new);
+	/*set_exp(args,new);
 	set_pastv(expr(args,false),new);
 	set_nowv(expr(args,false),new);
-	printf("%u\n",getNO(new));
+	printf("%u\n",getNO(new));*/
 	//set_wp(args);
   return 0;
 }
