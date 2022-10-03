@@ -104,15 +104,13 @@ static int cmd_p(char *args) {
 }
 
 static int cmd_w(char *args) {
-	//expr(new->exp,false)
-	//WP *new=new_wp();
+	//expr(args,false)
+	WP *new=new_wp();
 	//assert(0);
 	//new->exp="1+2";
 	//new->past_val=1;
 	//new->now_val=1;
-	WP new;
-	new.past_val=1;
-	printf("%u\n",new.past_val);
+	printf("%u\n",new->NO);
   return 0;
 }
 
