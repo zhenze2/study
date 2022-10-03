@@ -106,6 +106,7 @@ static int cmd_p(char *args) {
 static int cmd_w(char *args) {
 	printf("%s\n",args);
 	WP *new=new_wp();
+	assert(new!=NULL);
 	new->exp=args;
 	new->past_val=1;
 	new->now_val=1;
