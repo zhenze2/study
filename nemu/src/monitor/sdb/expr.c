@@ -334,7 +334,7 @@ uint32_t eval(int p, int q)
         }
         return data;
     }
-    else if (check_parentheses(p, q) == 1&&have(p,q)==0)
+    else if (check_parentheses(p, q) == 1)
     {
         /* The expression is surrounded by a matched pair of parentheses.
          * If that is the case, just throw away the parentheses.
