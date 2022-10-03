@@ -237,6 +237,7 @@ int check_parentheses(int left, int right)
     {
         return 0;
     }
+    
 }
 int oprand(int p, int q)
 {
@@ -339,6 +340,7 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
+        printf("%c\n",tokens[op].type);
         uint32_t val1=0;
         uint32_t val2=0;
         if(tokens[op].type!=DEREF)
