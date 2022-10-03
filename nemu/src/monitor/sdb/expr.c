@@ -19,7 +19,7 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-
+#include "../../../include/memory/paddr.h"
 uint32_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
@@ -339,8 +339,14 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        uint32_t val1 = eval(p, op - 1);
-        uint32_t val2 = eval(op + 1, q);
+        uint32_t val1=0;
+        uint32_t val2=0;
+        if(tokens[op].type!=DEREF)
+        {
+        val1 = eval(p, op - 1);
+        val2 = eval(op + 1, q);}
+        else{
+        val2=eval(op+1,q);}
 	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
         {
@@ -348,6 +354,8 @@ uint32_t eval(int p, int q)
             return val1 + val2;
         case '-':
             return val1 - val2;
+        case DEREF:
+            return paddr_read(val2,4);
         case '*':
             return val1 * val2;
         case '/':
@@ -364,8 +372,6 @@ uint32_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
-        case DEREF:
-            return 0;
         default:
             assert(0);
         }
