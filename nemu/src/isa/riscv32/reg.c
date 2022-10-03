@@ -15,7 +15,7 @@
 
 #include <isa.h>
 #include "local-include/reg.h"
-
+#include <string.h>
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -31,13 +31,20 @@ void isa_reg_display() {
 
 word_t isa_reg_str2val(const char *s, bool *success) {
      	word_t data=1;
+     	int len=strlen(s);
+     	int flag=1;
      	for(int i=0;i<32;i++){
-     	char *p= malloc(sizeof(char));
-     	sscanf(regs[i],"%s",p);
-     	printf("%s\t%s\t%d\t%u\n",s,p,p==s,cpu.gpr[i]);
-	if(regs[i]==s){
-	data=cpu.gpr[i];
-	break;
+	if(strlen(regs[i])==len){
+	   for(int l=0;l<len;l++)
+	   	{if(s[l]!=regs[i][l])
+	   		flag*=0;
+	   	 break;
+	   	}
+	   if(flag==1){
+	       data=cpu.gpr[i];
+	       break;
+	   }
+	   	   
 	}
 	}
      return data;
