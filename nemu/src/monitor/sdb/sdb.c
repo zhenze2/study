@@ -77,22 +77,13 @@ static int cmd_info(char *args) {
   return 0;
 }
 
-
-
-static int cmd_p(char *args) {
-	//printf("p EXPR_%s\n", args);
-	expr(args,false);
-
-  return 0;
-}
-
 static int cmd_x(char *args) {
 	int fir;
 	sscanf(strtok(NULL, " "),"%d",&fir);
 	uint32_t sec;
-	char *expr=strtok(NULL, " ");
+	char *exp=strtok(NULL, " ");
 	//sscanf(strtok(NULL, " "),"%x",&sec);
-	sec=cmd_p(expr);
+	sec=expr(exp,false);
 	//printf("\n0x%08x:\t", sec);
 	for(int i=0;i<fir;i++){
 	if(i%4==0){
@@ -106,6 +97,14 @@ static int cmd_x(char *args) {
 	
   return 0;
 }
+
+static int cmd_p(char *args) {
+	//printf("p EXPR_%s\n", args);
+	expr(args,false);
+
+  return 0;
+}
+
 static int cmd_w(char *args) {
 	printf("w EXPR\n");
   return 0;
