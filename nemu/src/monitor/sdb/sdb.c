@@ -82,14 +82,14 @@ static int cmd_x(char *args) {
 	sscanf(strtok(NULL, " "),"%d",&fir);
 	uint32_t sec;
 	sscanf(strtok(NULL, " "),"%x",&sec);
-	for(int i=0;i<fir;i++){
+	/*for(int i=0;i<fir;i++){
 	if(i%4==0){
 	printf("\n0x%08x:\t", sec);
 	}
 	printf("0x%08x\t", paddr_read(sec,4));
 	sec+=4;
 	}
-	printf("\n");
+	printf("\n");*/
 	
 	
   return 0;
