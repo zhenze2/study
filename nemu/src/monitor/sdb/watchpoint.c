@@ -52,15 +52,17 @@ void free_wp(int N){
 	if(head_f->NO==N){
 		wp=head_f;
 		head=head->next;
-	}
+	}else{
+	
 	while(head_f->next!=NULL){
 		//delete the NO N watchpoint
 		if(head_f->next->NO==N){
 		wp=head_f->next;
 		head_f=head_f->next->next;
 		break;
-	}	
-	}
+							}	
+								}
+		}
     WP* temp=free_;
     while(temp->next!=NULL){
        if(temp->next==NULL){temp->next=wp;
