@@ -203,8 +203,8 @@ word_t expr(char *e, bool *success) {
             tokens[i].type = DEREF;
         }
     }
-    printf("%u\n",eval(0,nr_token-1));
-  return 0;
+    //printf("%u\n",eval(0,nr_token-1));
+  return eval(0,nr_token-1);
 }
 
 

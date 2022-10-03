@@ -84,7 +84,7 @@ static int cmd_x(char *args) {
 	char *exp=strtok(NULL, " ");
 	//sscanf(strtok(NULL, " "),"%x",&sec);
 	sec=expr(exp,false);
-	//printf("\n0x%08x:\t", sec);
+	printf("\n0x%08x:\t", sec);
 	for(int i=0;i<fir;i++){
 	if(i%4==0){
 	printf("\n0x%08x:\t", sec);
@@ -100,8 +100,7 @@ static int cmd_x(char *args) {
 
 static int cmd_p(char *args) {
 	//printf("p EXPR_%s\n", args);
-	expr(args,false);
-
+	printf("%u\n",expr(args,false));
   return 0;
 }
 
