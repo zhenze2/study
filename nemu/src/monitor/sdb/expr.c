@@ -340,15 +340,22 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
+        int left,right;
+        left=p-1;
+        right=q-1;
+        if(tokens[op-1].type==')')
+        {right--;}
+         if(tokens[op+1].type=='(')
+        {left++;}
         printf("%c\n",tokens[op].type);
         uint32_t val1=0;
         uint32_t val2=0;
         if(tokens[op].type!=DEREF)
         {
-        val1 = eval(p, op - 1);
-        val2 = eval(op + 1, q);}
+        val1 = eval(p, right);
+        val2 = eval(left, q);}
         else{
-        val2=eval(op+1,q);}
+        val2=eval(left,q);}
 	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
         {
