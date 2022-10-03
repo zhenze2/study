@@ -108,8 +108,8 @@ static int cmd_w(char *args) {
 	WP *new=new_wp();
 	assert(0);
 	new->exp=args;
-	new->past_val=1;
-	new->now_val=1;
+	//new->past_val=1;
+	//new->now_val=1;
   return 0;
 }
 
