@@ -24,7 +24,7 @@ uint32_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
-int have(int p,int q);
+
 
 
 enum {
@@ -198,7 +198,7 @@ word_t expr(char *e, bool *success) {
   //TODO();
     for (int i = 0; i < nr_token; i++)
     {
-        if (tokens[i].type == '*' && (i == 0 || tokens[i - 1].type=='+'||tokens[i - 1].type=='-'||tokens[i - 1].type=='*'||tokens[i - 1].type=='/'))
+        if (tokens[i].type == '*' && (i == 0 || (tokens[i - 1].type !=TK_INT&&tokens[i - 1].type !=TK_REG&&tokens[i - 1].type !=TK_HEX)))
         {
             tokens[i].type = DEREF;
         }
@@ -211,15 +211,11 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentheses(int left, int right)
 {
-    //int ans=0;
-    if (tokens[left].type == '(' && tokens[right].type != ')')
+    if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')')||(tokens[left].type != '(' && tokens[right].type != ')'))
     {
-        return 1;
+        return 0;
     }
-    else{
-    return 0;
-    }
-    /*int top = -1;
+    int top = -1;
     for (int i = left; i <= right; i++)
     {
         if (tokens[i].type == '(')
@@ -235,14 +231,12 @@ int check_parentheses(int left, int right)
     }
     if (top == -1)
     {
-        ans=0;
+        return 1;
     }
     else
     {
-        ans=1;
+        return 0;
     }
-    return ans;*/
-    
 }
 int oprand(int p, int q)
 {
@@ -304,7 +298,7 @@ int num(int c)
     case TK_OR:
     	return 0;
     default:
-        return -1;
+        break;
     }
     return 10;
 }
@@ -345,19 +339,15 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        int left,right;
-        left=op+1;
-        right=op-1;
-        printf("%c\n",tokens[op].type);
         uint32_t val1=0;
         uint32_t val2=0;
         if(tokens[op].type!=DEREF)
         {
-        val1 = eval(p, right);
-        val2 = eval(left, q);}
+        val1 = eval(p, op - 1);
+        val2 = eval(op + 1, q);}
         else{
-        val2=eval(left,q);}
-	printf("%c\n",tokens[p].type);
+        val2=eval(op+1,q);}
+	//printf("%c\n",tokens[op].type);
         switch (tokens[op].type)
         {
         case '+':
@@ -386,15 +376,5 @@ uint32_t eval(int p, int q)
             assert(1);
         }
     }
-    return 0;
-}
-int have(int p,int q){
-    for (int i = p + 1;i < q;i++){
-        if(tokens[i].type=='('||tokens[i].type==')')
-        printf("have\n");
-            return 1;
-            
-    }
-     printf("nohave\n");
     return 0;
 }
