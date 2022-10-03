@@ -343,10 +343,8 @@ uint32_t eval(int p, int q)
         int left,right;
         left=op+1;
         right=op-1;
-        if(tokens[op-1].type==')')
-        {right--;}
-         if(tokens[op+1].type=='(')
-        {left++;}
+        if(tokens[op-1].type==')'&&tokens[op+1].type=='(')
+        {right--;left++;}
         if(tokens[p].type=='('&&tokens[q].type==')')
         {p++;q--;}
         printf("%c\n",tokens[op].type);
