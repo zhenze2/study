@@ -76,7 +76,7 @@ WP* gethead(){
 }
 void wp_display(){
 	if(head==NULL){
-	printf("There is no watch right now.\n");
+	printf("There is no watchpoint right now.\n");
 	}
 	else{
 		WP *temp=head;
