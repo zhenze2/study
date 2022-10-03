@@ -28,7 +28,7 @@ int oprand(int p, int q);
 
 
 enum {
-  TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,TK_POINT,TK_HEX,TK_REG,
+  TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,DEREF,TK_HEX,TK_REG,
   TK_NOLESS,TK_NOBIGGER,TK_OR
 
   /* TODO: Add more token types ,have done*/
@@ -196,7 +196,13 @@ word_t expr(char *e, bool *success) {
   //printf("%d\n",oprand(0,nr_token-1));
   /* TODO: Insert codes to evaluate the expression. */
   //TODO();
-
+    for (int i = 0; i < nr_token; i++)
+    {
+        if (tokens[i].type == '*' && (i == 0 || (tokens[i - 1].type !=TK_INT&&tokens[i - 1].type !=TK_REG&&tokens[i - 1].type !=TK_HEX)))
+        {
+            tokens[i].type = DEREF;
+        }
+    }
     printf("%u\n",eval(0,nr_token-1));
   return 0;
 }
@@ -237,7 +243,7 @@ int oprand(int p, int q)
     int result = p;
     for (int i = p; i <= q; i++)
     {
-        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_POINT&&tokens[i].type!=TK_HEX)
+        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX)
         {
             int a = 0;
             int b = 0;
@@ -273,6 +279,8 @@ int num(int c)
 {
     switch (c)
     {
+    case DEREF:
+    	return 6;
     case '+':
     case '-':
         return 4;
@@ -298,7 +306,7 @@ uint32_t eval(int p, int q)
 {
     if (p > q)
     {
-        printf("This is a bad expression");
+        printf("This is a bad expression\n");
         /* Bad expression */
     }
     else if (p == q)
@@ -356,6 +364,8 @@ uint32_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
+        case DEREF:
+            return 0;
         default:
             assert(0);
         }
