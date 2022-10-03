@@ -101,7 +101,7 @@ static int cmd_x(char *args) {
 
 static int cmd_p(char *args) {
 	//printf("p EXPR_%s\n", args);
-	char *arg=strtok(NULL," ");
+	char *arg=strtok(NULL,"");
 	printf("%u\n",expr(arg,false));
   return 0;
 }
