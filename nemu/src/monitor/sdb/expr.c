@@ -56,7 +56,7 @@ static struct rule {
   {"&&",TK_AND},	//and
   {"^0x[0-9a-zA-Z]+",TK_HEX},
   {"^[0-9]+", TK_INT},
-  {"^\\$[\\$0-9a-zA-Z]+$",TK_REG},
+  {"^\\$[\\$0-9a-zA-Z]+",TK_REG},
 
 };
 
