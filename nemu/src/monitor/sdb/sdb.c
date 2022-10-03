@@ -110,7 +110,7 @@ static int cmd_w(char *args) {
 	set_exp(args,new);
 	set_pastv(expr(args,false),new);
 	set_nowv(expr(args,false),new);
-	printf("%u\n",getNO(new));
+	//printf("%u\n",getNO(new));
   return 0;
 }
 
