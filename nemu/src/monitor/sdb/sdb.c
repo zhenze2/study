@@ -109,7 +109,7 @@ static int cmd_w(char *args) {
 	new->exp=args;
 	new->past_val=expr(args,false);
 	new->now_val=expr(args,false);
-	printf("%u\n",new->NO);
+	printf("%u\n",new->now_val);
   return 0;
 }
 
