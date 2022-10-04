@@ -217,9 +217,6 @@ word_t expr(char *e, bool *success) {
             tokens[i].type = MINUS;
             //printf("YES\t%d\n",tokens[i].type);
         }
-        /*if(tokens[i].type==TK_REG){
-        printf("reg\n");
-        }*/
     }
     //printf("%u\n",eval(0,nr_token-1));
     word_t data=eval(0,nr_token-1);
