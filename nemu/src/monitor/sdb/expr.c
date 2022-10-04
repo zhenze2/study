@@ -205,6 +205,7 @@ word_t expr(char *e, bool *success) {
     }
      for (int i = 0; i < nr_token; i++)
     {
+    	printf("YESORNO\t%c\n",tokens[i].type);
         if (tokens[i].type == '-' && (i == 0 || tokens[i - 1].type =='+'||tokens[i - 1].type=='-'||tokens[i - 1].type == '*'||tokens[i - 1].type =='/'||tokens[i - 1].type ==TK_EQ||tokens[i - 1].type ==TK_INEQ||tokens[i - 1].type ==TK_NOLESS||tokens[i - 1].type ==TK_NOBIGGER||tokens[i - 1].type ==TK_OR||tokens[i - 1].type ==TK_AND))
         {
             tokens[i].type = MINUS;
