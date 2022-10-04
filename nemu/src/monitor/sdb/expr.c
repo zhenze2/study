@@ -215,7 +215,7 @@ int check_parentheses(int left, int right)
     {
         return 0;
     }*/
-    if(left<right){return 0;}
+    if(left>right){return 0;}
     int top = -1;
     for (int i = left; i <= right; i++)
     {
