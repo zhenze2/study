@@ -350,7 +350,8 @@ int eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        //printf("%d\n",op);
+        printf("%d\n",op);
+        
         int val1=0;
         int val2=0;
         //word_t val1 = eval(p, op - 1);
