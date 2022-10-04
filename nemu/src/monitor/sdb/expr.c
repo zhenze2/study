@@ -356,12 +356,13 @@ int eval(int p, int q)
         int val2=0;
         //word_t val1 = eval(p, op - 1);
         //word_t val2 = eval(op + 1, q);
-        if(tokens[op].type!=DEREF)
+        if(tokens[op].type==DEREF)
         {
-        val1 = eval(p, op - 1);
+        
         val2 = eval(op + 1, q);}
         else if(tokens[op].type==MINUS){val2=-eval(op+1,p);}
         else{
+        val1 = eval(p, op - 1);
         val2=eval(op+1,q);}
         switch (tokens[op].type)
         {
