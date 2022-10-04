@@ -220,7 +220,7 @@ word_t expr(char *e, bool *success) {
     }
     //printf("%u\n",eval(0,nr_token-1));
     word_t data=eval(0,nr_token-1);
-    memset(tokens,0,sizeof(Token));
+    memset(tokens,0,sizeof(Token)*32);
   return data;
 }
 
