@@ -19,7 +19,7 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-#include "../../../include/memory/paddr.h"
+#include "../../../include/memory/vaddr.h"
 int eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
@@ -371,7 +371,7 @@ int eval(int p, int q)
         case '-':
             return val1 - val2;
         case DEREF:
-            return paddr_read(val2,4);
+            return vaddr_read(val2,4);
         case MINUS:
             return val2;
         case '*':
