@@ -359,7 +359,7 @@ word_t eval(int p, int q)
         if(tokens[op].type==DEREF)
         {
         val2 = eval(op + 1, q);}
-        else if(tokens[op].type==MINUS){val2=-eval(op+1,q);}
+        else if(tokens[op].type==MINUS){val2=eval(op+1,q);}
         else{
         val1 = eval(p, op - 1);
         val2=eval(op+1,q);}
@@ -373,7 +373,7 @@ word_t eval(int p, int q)
         case DEREF:
             return vaddr_read(val2,4);
         case MINUS:
-            return val2;
+            return -val2;
         case '*':
             return val1 * val2;
         case '/':
