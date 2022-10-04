@@ -282,7 +282,7 @@ int oprand(int p, int q)
             if (num(tokens[result].type) >= num(tokens[i].type))
             {
                 result = i;
-                printf("YES\n");
+                printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
             }
         }
     }
