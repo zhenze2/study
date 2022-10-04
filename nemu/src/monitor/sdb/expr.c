@@ -224,10 +224,6 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentheses(int left, int right)
 {
-    /*if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')')||(tokens[left].type != '(' && tokens[right].type != ')'))
-    {
-        return 0;
-    }*/
     if(left>right){return 0;}
     int top = -1;
     for (int i = left; i <= right; i++)
