@@ -42,11 +42,12 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	}*/
 	  if(strcmp(s,regs[i])==0){
 	       return gpr(i);
-	       //success= (bool*)true;
+	       success= (bool*)true;
 	   break;
 	   }
 	 	   
 	}
 	}
+     if(success==false){assert(0);}
      return 0;
 }
