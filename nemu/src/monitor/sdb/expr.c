@@ -250,11 +250,11 @@ int oprand(int p, int q)
         {
             int a = 0;
             int b = 0;
-            int l1=p;
-            int l2=i-1;
-            int r1=q;
-            int r2=i+1;
-            for (int j = i; j > p; j--)
+            int l1=i-1;
+            int l2=p;
+            int r1=i+1;
+            int r2=q;
+            for (int j = i; j >=p; j--)
             {
                 if (tokens[j].type == '(')
                 {
@@ -263,7 +263,7 @@ int oprand(int p, int q)
                 if(tokens[j].type==')'){l1=j;}
                 if(l2>l1){a=1;break;}
             }
-            for (int j = i; j < q; j++)
+            for (int j = i; j <= q; j++)
             {
                 if (tokens[j].type == '(')
                 {
