@@ -31,7 +31,7 @@ void isa_reg_display() {
 
 word_t isa_reg_str2val(const char *s, bool *success) {
 		printf("%s\n",s);
-//int suc=0;
+///int suc=0;
      	for(int i=0;i<32;i++){
 	//printf("%d\n",strcmp(s,regs[i]));
 	       	 if(strcmp(s,regs[i])==0){
@@ -41,7 +41,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	       }
 
 	}
-	printf("NO\n");
+	//printf("NO\n");
 	//assert(suc==1);
 	return 0;
      
