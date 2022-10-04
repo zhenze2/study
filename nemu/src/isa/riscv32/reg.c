@@ -30,7 +30,6 @@ void isa_reg_display() {
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
-     	word_t data=1;
      	int len=strlen(s);
      	//int flag=0;
      	//bool a=true;
@@ -42,12 +41,12 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   		flag++;
 	   	}*/
 	  if(strcmp(s,regs[i])==0){
-	       data=gpr(i);
+	       return gpr(i);
 	       //success= (bool*)true;
 	   break;
 	   }
 	 	   
 	}
 	}
-     return data;
+     return 0;
 }
