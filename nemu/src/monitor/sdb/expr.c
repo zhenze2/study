@@ -20,7 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/vaddr.h"
-word_t eval(int p, int q);
+int eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
@@ -310,7 +310,7 @@ int num(int c)
     }
     return 10;
 }
-word_t eval(int p, int q)
+int eval(int p, int q)
 {
     //printf("%d,%d\n",p,q);
     if (p > q)
@@ -351,8 +351,8 @@ word_t eval(int p, int q)
         int op = oprand(p, q);
         //printf("%d\n",tokens[op].type);
         //printf("%d,%d,%d,%c\n",p,q,op,tokens[op].type);
-        word_t val1=0;
-        word_t val2=0;
+        int val1=0;
+        int val2=0;
         //word_t val1 = eval(p, op - 1);
         //word_t val2 = eval(op + 1, q);
         if(tokens[op].type==DEREF)
