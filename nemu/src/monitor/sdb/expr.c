@@ -260,7 +260,8 @@ int oprand(int p, int q)
     int result=0;
     int r=0;
     for (int i = p; i <= q; i++)
-    {
+    {	
+    printf("%d\n",i);
     	if(tokens[i].type==TK_INT||tokens[i].type==TK_REG||tokens[i].type==TK_HEX){
     	   continue;
     	}
