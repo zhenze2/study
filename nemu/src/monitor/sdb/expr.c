@@ -304,7 +304,7 @@ int num(int c)
 }
 uint32_t eval(int p, int q)
 {
-    printf("%d,%d,%d,%d\n",p,q,check_parentheses(p, q),check_parentheses(p+1, q-1));
+    //printf("%d,%d,%d,%d\n",p,q,check_parentheses(p, q),check_parentheses(p+1, q-1));
     if (p > q)
     {
         printf("This is a bad expression\n");
@@ -341,7 +341,7 @@ uint32_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        printf("%d\n",op);
+        //printf("%d\n",op);
         //uint32_t val1=0;
         //uint32_t val2=0;
         word_t val1 = eval(p, op - 1);
