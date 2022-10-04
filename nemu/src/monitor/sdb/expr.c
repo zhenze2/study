@@ -20,7 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/paddr.h"
-uint32_t eval(int p, int q);
+int eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
 int oprand(int p, int q);
@@ -29,7 +29,7 @@ int oprand(int p, int q);
 
 enum {
   TK_NOTYPE = 256, TK_EQ,TK_INT,TK_INEQ,TK_AND,DEREF,TK_HEX,TK_REG,
-  TK_NOLESS,TK_NOBIGGER,TK_OR
+  TK_NOLESS,TK_NOBIGGER,TK_OR,MINUS
 
   /* TODO: Add more token types ,have done*/
 
@@ -203,6 +203,13 @@ word_t expr(char *e, bool *success) {
             tokens[i].type = DEREF;
         }
     }
+     for (int i = 0; i < nr_token; i++)
+    {
+        if (tokens[i].type == '-' && (i == 0 || tokens[i - 1].type =='+'||tokens[i - 1].type=='-'||tokens[i - 1].type == '*'||tokens[i - 1].type =='/'))
+        {
+            tokens[i].type = MINUS;
+        }
+    }
     //printf("%u\n",eval(0,nr_token-1));
   return eval(0,nr_token-1);
 }
@@ -302,7 +309,7 @@ int num(int c)
     }
     return 10;
 }
-uint32_t eval(int p, int q)
+int eval(int p, int q)
 {
     //printf("%d,%d,%d,%d\n",p,q,check_parentheses(p, q),check_parentheses(p+1, q-1));
     if (p > q)
@@ -316,7 +323,7 @@ uint32_t eval(int p, int q)
          * For now this token should be a number.
          * Return the value of the number.
          */
-        uint32_t data;
+        int data;
         if(tokens[p].type==TK_REG){
             return isa_reg_str2val(tokens[p].str,false);
         }
@@ -325,7 +332,7 @@ uint32_t eval(int p, int q)
            sscanf(tokens[p].str,"%x",&data);
         }
         else{
-        sscanf(tokens[p].str, "%u", &data);
+        sscanf(tokens[p].str, "%d", &data);
         }
         return data;
     }
@@ -342,14 +349,15 @@ uint32_t eval(int p, int q)
         /* We should do more things here. */
         int op = oprand(p, q);
         //printf("%d\n",op);
-        uint32_t val1=0;
-        uint32_t val2=0;
+        int val1=0;
+        int val2=0;
         //word_t val1 = eval(p, op - 1);
         //word_t val2 = eval(op + 1, q);
         if(tokens[op].type!=DEREF)
         {
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);}
+        else if(tokens[op].type==MINUS){val2=-eval(op+1,p);}
         else{
         val2=eval(op+1,q);}
         switch (tokens[op].type)
