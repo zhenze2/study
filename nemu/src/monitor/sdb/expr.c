@@ -223,7 +223,7 @@ int check_parentheses(int left, int right)
             top++;
             op[top] = '(';
         }
-        if (tokens[i].type == ')')
+        else if (tokens[i].type == ')')
         {
             op[top]=-1;
             top--;
@@ -304,6 +304,7 @@ int num(int c)
 }
 uint32_t eval(int p, int q)
 {
+    printf("%d,%d\n",p,q);
     if (p > q)
     {
         printf("This is a bad expression\n");
