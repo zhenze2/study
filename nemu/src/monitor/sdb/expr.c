@@ -275,31 +275,7 @@ int oprand(int p, int q)
                 result = i;
                 //printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
             }
-        /*if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
-        {
-            int l1=-2;
-            int r1=-2;
-            for (int j = i; j >=p; j--)
-            {
-                if (tokens[j].type == '(')
-                {
-                    l1 = j;
-                    break;
-                }
-            }
-            for (int j = i; j <= q; j++)
-            {
-                if(tokens[j].type==')'){r1=j;break;}
-            }
-            if(l1!=-2&&r1!=-2&&check_parentheses(l1+1,r1-1)==1){
-                continue;
-            }
-            if (num(tokens[result].type) >= num(tokens[i].type))
-            {
-                result = i;
-                printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
-            }
-        }*/
+
         
     }
     return result;
@@ -414,8 +390,8 @@ word_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
-        //case '(':case ')':Assert(0,"(and)");
-        //case TK_INT:case TK_REG: case TK_HEX:Assert(0,"(and)");
+        case '(':case ')':Assert(0,"(and)");
+        case TK_INT:case TK_REG: case TK_HEX:Assert(0,"(and)");
         default:
             assert(0);
         }
