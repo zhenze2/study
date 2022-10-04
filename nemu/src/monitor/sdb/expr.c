@@ -273,7 +273,7 @@ int oprand(int p, int q)
     	  	if(r==0){i=j+1;break;}
     	  }
     	}
-    	   if(i>p){break;}
+    	   if(i>q){break;}
             if (num(tokens[result].type) >= num(tokens[i].type))
             {
                 result = i;
