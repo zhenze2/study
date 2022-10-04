@@ -261,7 +261,7 @@ int oprand(int p, int q)
     int r=0;
     for (int i = p; i <= q; i++)
     {	
-    printf("%d\n",i);
+    //printf("%d\n",i);
     	if(tokens[i].type==TK_INT||tokens[i].type==TK_REG||tokens[i].type==TK_HEX){
     	   continue;
     	}
@@ -277,7 +277,7 @@ int oprand(int p, int q)
             if (num(tokens[result].type) >= num(tokens[i].type))
             {
                 result = i;
-                printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
+                //printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
             }
         /*if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
         {
