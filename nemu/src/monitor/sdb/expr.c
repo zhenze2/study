@@ -390,6 +390,7 @@ word_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
+        case '(':case ')':assert(0);
         default:
             assert(0);
         }
