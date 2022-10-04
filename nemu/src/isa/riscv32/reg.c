@@ -41,7 +41,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	//printf("%c\t%c\t%d\n",s[l],regs[i][l],s[l]!=regs[i][l]);
 	   		flag++;
 	   	}*/
-	  if(strcmp(s,regs[i])){
+	  if(strcmp(s,regs[i])==0){
 	       data=gpr(i);
 	       //success= (bool*)true;
 	   break;
