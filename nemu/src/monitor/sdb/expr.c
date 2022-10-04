@@ -215,6 +215,7 @@ int check_parentheses(int left, int right)
     {
         return 0;
     }*/
+    if(left<right){return 0;}
     int top = -1;
     for (int i = left; i <= right; i++)
     {
@@ -248,8 +249,8 @@ int oprand(int p, int q)
     {
         if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
         {
-            int l1=p;
-            int r1=q;
+            int l1=2;
+            int r1=1;
             for (int j = i; j >=p; j--)
             {
                 if (tokens[j].type == '(')
