@@ -359,10 +359,11 @@ int eval(int p, int q)
         if(tokens[op].type==DEREF)
         {
         val2 = eval(op + 1, q);}
-        else if(tokens[op].type==MINUS){printf("-\n");val2=-eval(op+1,q);}
+        else if(tokens[op].type==MINUS){val2=-eval(op+1,q);}
         else{
         val1 = eval(p, op - 1);
         val2=eval(op+1,q);}
+        printf("%d,%d\n",val1,val2);
         switch (tokens[op].type)
         {
         case '+':
