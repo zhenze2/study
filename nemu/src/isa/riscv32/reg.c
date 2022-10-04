@@ -46,12 +46,12 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   		flag++;
 	   	}
 	   	if(flag==len){	    
-	   	data = gpr(i);
+	   	data = cpu.gpr[i];
 	       success= (bool*)true;
 	       break;
 	       }   
 	}
 	}
-     //if(success==false){assert(0);}
+     if(success==false){assert(0);}
      return data;
 }
