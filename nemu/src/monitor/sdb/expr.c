@@ -258,9 +258,27 @@ int check_parentheses(int left, int right)
 int oprand(int p, int q)
 {
     int result=0;
+    int r=0;
     for (int i = p; i <= q; i++)
     {
-        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
+    	if(tokens[i].type==TK_INT||tokens[i].type==TK_REG||tokens[i].type==TK_HEX){
+    	   continue;
+    	}
+    	if(tokens[i].type=='('){
+    	  r++;
+    	  for(int j=i+1;j<=q;j++){
+    	  	if(tokens[j].type=='(')r++;
+    	  	else if(tokens[j].type==')')r--;
+    	  	if(r==0){i=j+1;break;}
+    	  }
+    	}
+    
+            if (num(tokens[result].type) >= num(tokens[i].type))
+            {
+                result = i;
+                //printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
+            }
+        /*if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
         {
             int l1=-2;
             int r1=-2;
@@ -284,7 +302,8 @@ int oprand(int p, int q)
                 result = i;
                 printf("YES,%d,%c\n",tokens[i].type,tokens[i].type);
             }
-        }
+        }*/
+        
     }
     return result;
 }
