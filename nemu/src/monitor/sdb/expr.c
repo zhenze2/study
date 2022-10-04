@@ -226,7 +226,9 @@ int check_parentheses(int left, int right)
         else if (tokens[i].type == ')')
         {
             printf("%d\n",top);
-            op[top]=-1;
+            if(top>-1)
+            {op[top]=-1;}
+            else{return 0;}
             top--;
         }
     }
