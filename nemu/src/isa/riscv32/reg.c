@@ -31,19 +31,21 @@ void isa_reg_display() {
 
 word_t isa_reg_str2val(const char *s, bool *success) {
      	//int len=strlen(s);
-     	word_t data=0;
-     	int suc=0;
+     	//word_t data=0;
+     	//int suc=0;
      	//int flag=0;
      	//bool a=true;
      	for(int i=0;i<32;i++){
 
 	       	 if(strcmp(s,regs[i])==0){	    
-	   	data= cpu.gpr[i];
-	   	suc=1;
-	       break;
+	   	return cpu.gpr[i];
+	   	//suc=1;
+	       //break;
 	       }
 
 	}
-     assert(suc==1);
-     return data;
+	
+	return 0;
+     //assert(suc==1);
+     //return data;
 }
