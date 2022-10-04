@@ -391,7 +391,7 @@ word_t eval(int p, int q)
         case TK_NOBIGGER:
             return val1<=val2;
         default:
-            assert(0);
+            assert(tokens[op].type==MINUS);
         }
     }
     return 0;
