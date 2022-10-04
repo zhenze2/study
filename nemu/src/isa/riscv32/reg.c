@@ -32,6 +32,7 @@ void isa_reg_display() {
 word_t isa_reg_str2val(const char *s, bool *success) {
      	int len=strlen(s);
      	word_t data=0;
+     	int suc=0;
      	int flag=0;
      	//bool a=true;
      	for(int i=0;i<32;i++){
@@ -48,11 +49,11 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	if(flag==len){	    
 	   	data = gpr(i);
 	       success= (bool*)true;
-	       assert(*success==true);
+	       suc=1;
 	       break;
 	       }   
 	}
 	}
-     if(success==false){assert(0);}
+     assert(suc==1);
      return data;
 }
