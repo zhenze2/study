@@ -52,6 +52,6 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	       }   
 	}
 	}
-     if(success==false){assert(0);}
+     //if(success==false){assert(0);}
      return data;
 }
