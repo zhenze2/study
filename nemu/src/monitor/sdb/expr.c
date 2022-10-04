@@ -223,8 +223,9 @@ int check_parentheses(int left, int right)
             top++;
             op[top] = '(';
         }
-        else if (tokens[i].type == ')'&&op[top]=='(')
+        else if (tokens[i].type == ')')
         {
+            printf("%d\n",top);
             op[top]=-1;
             top--;
         }
