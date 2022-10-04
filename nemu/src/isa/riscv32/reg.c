@@ -48,6 +48,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	if(flag==len){	    
 	   	data = gpr(i);
 	       success= (bool*)true;
+	       assert(success!=false);
 	       break;
 	       }   
 	}
