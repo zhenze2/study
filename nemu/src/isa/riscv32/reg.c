@@ -40,7 +40,7 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	       }
 
 	}
-	
+	printf("NO\n");
 	return 0;
      //assert(suc==1);
      //return data;
