@@ -316,7 +316,7 @@ int num(int c)
 }
 word_t eval(int p, int q)
 {
-    //printf("%d,%d,%d,%d\n",p,q,check_parentheses(p, q),check_parentheses(p+1, q-1));
+    printf("%d,%d\n",p,q);
     if (p > q)
     {
         printf("This is a bad expression\n");
