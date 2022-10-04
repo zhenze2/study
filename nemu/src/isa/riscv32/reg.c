@@ -40,11 +40,10 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 	   	if(s[l]==regs[i][l])
 	   	//printf("%c\t%c\t%d\n",s[l],regs[i][l],s[l]!=regs[i][l]);
 	   		flag++;
-	   	
 	   	}
 	  if(flag==len){
 	       data=cpu.gpr[i];
-	       success= (bool*)true;
+	       //success= (bool*)true;
 	   break;
 	   }
 	 	   
