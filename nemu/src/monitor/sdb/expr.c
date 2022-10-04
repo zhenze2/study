@@ -231,11 +231,11 @@ int check_parentheses(int left, int right)
     }
     if (top == -1)
     {
-        return 0;
+        return 1;
     }
     else
     {
-        return 1;
+        return 0;
     }
 }
 int oprand(int p, int q)
