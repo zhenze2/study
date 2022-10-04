@@ -386,8 +386,8 @@ word_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
-        case '(':case ')':Assert(0,"(and)");
-        case TK_INT:case TK_REG: case TK_HEX:Assert(0,"(and)");
+        //case '(':case ')':Assert(0,"(and)");
+        //case TK_INT:case TK_REG: case TK_HEX:Assert(0,"(and)");
         default:
             assert(0);
         }
