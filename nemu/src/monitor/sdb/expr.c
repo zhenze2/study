@@ -246,7 +246,7 @@ int oprand(int p, int q)
     int result = p;
     for (int i = p; i <= q; i++)
     {
-        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX)
+        if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
         {
             int a = 0;
             int b = 0;
