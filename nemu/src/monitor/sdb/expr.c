@@ -371,6 +371,8 @@ int eval(int p, int q)
             return val1 - val2;
         case DEREF:
             return paddr_read(val2,4);
+        case MINUS:
+            return -val2;
         case '*':
             return val1 * val2;
         case '/':
