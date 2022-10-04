@@ -359,7 +359,7 @@ int eval(int p, int q)
         if(tokens[op].type==DEREF)
         {
         val2 = eval(op + 1, q);}
-        else if(tokens[op].type==MINUS){printf("-\n");val2=-eval(op+1,p);}
+        else if(tokens[op].type==MINUS){printf("-\n");val2=-eval(op+1,q);}
         else{
         val1 = eval(p, op - 1);
         val2=eval(op+1,q);}
