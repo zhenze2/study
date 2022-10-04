@@ -58,9 +58,9 @@ static struct rule {
   {"\\|\\|",TK_OR},	//or
   {">=",TK_NOLESS},	//no less
   {"<=",TK_NOBIGGER},	//no bigger
-  {"(0x)[0-9a-zA-Z]+",TK_HEX},
-  {"[0-9]+", TK_INT},
-  {"\\$\\$?[0-9a-z]+",TK_REG},
+  {"^(0x)[0-9a-zA-Z]+",TK_HEX},
+  {"^[0-9]+", TK_INT},
+  {"^\\$[\\$0-9a-zA-Z]+",TK_REG},
 {"\\$s9",TK_REG},
 {"\\$s11",TK_REG},
 {"\\$t3",TK_REG},
