@@ -61,7 +61,12 @@ static struct rule {
   {"^(0x)[0-9a-zA-Z]+",TK_HEX},
   {"^[0-9]+", TK_INT},
   {"^\\$[\\$0-9a-zA-Z]+",TK_REG},
-
+{"\\$s9",TK_REG},
+{"\\$s11",TK_REG},
+{"\\$t3",TK_REG},
+{"\\$t4",TK_REG},
+{"\\$t5",TK_REG},
+{"\\$t6",TK_REG},
 };
 
 #define NR_REGEX ARRLEN(rules)
