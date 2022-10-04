@@ -256,8 +256,8 @@ int oprand(int p, int q)
     {
         if (tokens[i].type!=TK_INT&&tokens[i].type!=TK_REG&&tokens[i].type!=TK_HEX&&tokens[i].type!='('&&tokens[i].type!=')')
         {
-            int l1=2;
-            int r1=1;
+            int l1=-2;
+            int r1=-2;
             for (int j = i; j >=p; j--)
             {
                 if (tokens[j].type == '(')
@@ -270,7 +270,7 @@ int oprand(int p, int q)
             {
                 if(tokens[j].type==')'){r1=j;break;}
             }
-            if(check_parentheses(l1+1,r1-1)==1){
+            if(l1==-2||r1==-2||check_parentheses(l1+1,r1-1)==1){
                 continue;
             }
             if (num(tokens[result].type) >= num(tokens[i].type))
