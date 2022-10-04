@@ -353,6 +353,7 @@ word_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
+        printf("%d\n",tokens[op].type);
         //printf("%d,%d,%d,%c\n",p,q,op,tokens[op].type);
         word_t val1=0;
         word_t val2=0;
