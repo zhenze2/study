@@ -342,16 +342,16 @@ uint32_t eval(int p, int q)
         /* We should do more things here. */
         int op = oprand(p, q);
         //printf("%d\n",op);
-        //uint32_t val1=0;
-        //uint32_t val2=0;
-        word_t val1 = eval(p, op - 1);
-        word_t val2 = eval(op + 1, q);
-        /*if(tokens[op].type!=DEREF)
+        uint32_t val1=0;
+        uint32_t val2=0;
+        //word_t val1 = eval(p, op - 1);
+        //word_t val2 = eval(op + 1, q);
+        if(tokens[op].type!=DEREF)
         {
         val1 = eval(p, op - 1);
         val2 = eval(op + 1, q);}
         else{
-        val2=eval(op+1,q);}*/
+        val2=eval(op+1,q);}
         switch (tokens[op].type)
         {
         case '+':
