@@ -262,7 +262,7 @@ int oprand(int p, int q)
             {
                 if(tokens[j].type==')'){r1=j;break;}
             }
-            if(check_parentheses(l1+1,r1-1)==1){
+            if(check_parentheses(l1+1,r1-1)==0){
                 continue;
             }
             if (num(tokens[result].type) >= num(tokens[i].type))
