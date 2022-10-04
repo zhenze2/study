@@ -33,16 +33,13 @@ word_t isa_reg_str2val(const char *s, bool *success) {
 		printf("%s\n",s);
 ///int suc=0;
      	for(int i=0;i<32;i++){
-	//printf("%d\n",strcmp(s,regs[i]));
 	       	 if(strcmp(s,regs[i])==0){
-	       	 	   //suc=1; 
 	   	return cpu.gpr[i];
 
 	       }
 
 	}
 	//printf("NO\n");
-	//assert(suc==1);
 	assert(0);
 	return 0;
      
