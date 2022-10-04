@@ -259,9 +259,10 @@ int oprand(int p, int q)
                 if (tokens[j].type == '(')
                 {
                     l2 = j;
+                    a=1;
                 }
                 if(tokens[j].type==')'){l1=j;}
-                if(l2<l1){a=1;}
+                if(l2<l1){a=0;}
             }
             for (int j = i; j <= q; j++)
             {
@@ -269,8 +270,8 @@ int oprand(int p, int q)
                 {
                    r1=j;
                 }
-                if(tokens[j].type==')'){r2=j;}
-                if(r2>r1){b=1;}
+                if(tokens[j].type==')'){b=1;r2=j;}
+                if(r2>r1){b=0;}
             }
             if(a*b==1){
                 continue;
