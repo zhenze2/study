@@ -363,7 +363,7 @@ int eval(int p, int q)
         else{
         val1 = eval(p, op - 1);
         val2=eval(op+1,q);}
-        printf("%d,%d\n",val1,val2);
+        //printf("%d,%d\n",val1,val2);
         switch (tokens[op].type)
         {
         case '+':
