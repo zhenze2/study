@@ -20,6 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/vaddr.h"
+#include "../../../include/debug.h"
 word_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
@@ -390,9 +391,9 @@ word_t eval(int p, int q)
             return val1>=val2;
         case TK_NOBIGGER:
             return val1<=val2;
-        case '(':case ')':assert(0);
+        case '(':case ')':Assert(0,"(and)");
         default:
-            assert(0);
+            Assert(0,"no token");
         }
     }
     return 0;
