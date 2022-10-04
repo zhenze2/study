@@ -20,7 +20,7 @@
  */
 #include <regex.h>
 #include "../../../include/memory/vaddr.h"
-#include "../../../include/debug.h"
+//#include "../../../include/debug.h"
 word_t eval(int p, int q);
 int check_parentheses(int left, int right);
 int num(int c);
