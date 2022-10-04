@@ -288,6 +288,8 @@ int num(int c)
     {
     case DEREF:
     	return 6;
+    case MINUS:
+    	return 6;
     case '+':
     case '-':
         return 4;
