@@ -329,7 +329,7 @@ uint32_t eval(int p, int q)
         }
         return data;
     }
-    else if (tokens[p].type=='('&&tokens[p].type==')'&&check_parentheses(p, q) == 1&&check_parentheses(p+1, q-1) == 1)
+    else if (tokens[p].type=='('&&tokens[q].type==')'&&check_parentheses(p, q) == 1&&check_parentheses(p+1, q-1) == 1)
     {
         /* The expression is surrounded by a matched pair of parentheses.
          * If that is the case, just throw away the parentheses.
