@@ -211,10 +211,10 @@ word_t expr(char *e, bool *success) {
 int op[32] __attribute__((used))={};
 int check_parentheses(int left, int right)
 {
-    if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')')||(tokens[left].type != '(' && tokens[right].type != ')'))
+    /*if ((tokens[left].type == '(' && tokens[right].type != ')') || (tokens[left].type != '(' && tokens[right].type == ')')||(tokens[left].type != '(' && tokens[right].type != ')'))
     {
         return 0;
-    }
+    }*/
     int top = -1;
     for (int i = left; i <= right; i++)
     {
@@ -231,11 +231,11 @@ int check_parentheses(int left, int right)
     }
     if (top == -1)
     {
-        return 1;
+        return 0;
     }
     else
     {
-        return 0;
+        return 1;
     }
 }
 int oprand(int p, int q)
@@ -328,11 +328,12 @@ uint32_t eval(int p, int q)
         }
         return data;
     }
-    else if (check_parentheses(p, q) == 1)
+    else if (tokens[p].type=='('&&tokens[p].type==')'&&check_parentheses(p, q) == 1&&check_parentheses(p+1, q-1) == 1)
     {
         /* The expression is surrounded by a matched pair of parentheses.
          * If that is the case, just throw away the parentheses.
          */
+        
         return eval(p + 1, q - 1);
     }
     else
