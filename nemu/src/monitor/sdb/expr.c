@@ -250,7 +250,7 @@ int oprand(int p, int q)
         {
             int a = 0;
             int b = 0;
-            for (int j = result; j < i; j++)
+            for (int j = result; j > p; j--)
             {
                 if (tokens[j].type == '(')
                 {
@@ -258,7 +258,7 @@ int oprand(int p, int q)
                     break;
                 }
             }
-            for (int j = q; j > i; j--)
+            for (int j = result; j < q; j++)
             {
                 if (tokens[j].type == ')')
                 {
