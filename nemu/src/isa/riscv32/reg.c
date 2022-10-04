@@ -32,20 +32,22 @@ void isa_reg_display() {
 word_t isa_reg_str2val(const char *s, bool *success) {
      	int len=strlen(s);
      	word_t data=0;
-     	//int flag=0;
+     	int flag=0;
      	//bool a=true;
      	for(int i=0;i<32;i++){
 	if(strlen(regs[i])==len){
-	   /*for(int l=0;l<len;l++){
+	   for(int l=0;l<len;l++){
 	   	if(s[l]==regs[i][l])
 	   	//printf("%c\t%c\t%d\n",s[l],regs[i][l],s[l]!=regs[i][l]);
 	   		flag++;
-	   	}*/
-	  if(strcmp(s,regs[i])==0){
+	   	}
+	   	if(flag==len){	       data = gpr(i);
+	       success= (bool*)true;}
+	  /*if(strcmp(s,regs[i])==0){
 	       data = gpr(i);
 	       success= (bool*)true;
 	   break;
-	   }
+	   }*/
 	 	   
 	}
 	}
