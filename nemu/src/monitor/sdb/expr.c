@@ -350,7 +350,7 @@ int eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        printf("%d\n",op);
+        //printf("%d\n",op);
         
         int val1=0;
         int val2=0;
@@ -373,7 +373,7 @@ int eval(int p, int q)
         case DEREF:
             return paddr_read(val2,4);
         case MINUS:
-            return -val2;
+            return val2;
         case '*':
             return val1 * val2;
         case '/':
