@@ -353,7 +353,7 @@ word_t eval(int p, int q)
     {
         /* We should do more things here. */
         int op = oprand(p, q);
-        printf("%d\n",op);
+        //printf("%d\n",op);
         word_t val1=0;
         word_t val2=0;
         //word_t val1 = eval(p, op - 1);
@@ -393,6 +393,7 @@ word_t eval(int p, int q)
         case TK_NOBIGGER:
             return val1<=val2;
         case '(':case ')':Assert(0,"(and)");
+        case TK_INT:case TK_REG: case TK_HEX:Assert(0,"(and)");
         default:
             Assert(0,"no token");
         }
