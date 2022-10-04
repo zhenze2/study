@@ -208,6 +208,7 @@ word_t expr(char *e, bool *success) {
         if (tokens[i].type == '-' && (i == 0 || tokens[i - 1].type =='+'||tokens[i - 1].type=='-'||tokens[i - 1].type == '*'||tokens[i - 1].type =='/'||tokens[i - 1].type ==TK_EQ||tokens[i - 1].type ==TK_INEQ||tokens[i - 1].type ==TK_NOLESS||tokens[i - 1].type ==TK_NOBIGGER||tokens[i - 1].type ==TK_OR||tokens[i - 1].type ==TK_AND))
         {
             tokens[i].type = MINUS;
+            printf("YES\t%d\n",tokens[i].type);
         }
         /*if(tokens[i].type==TK_REG){
         printf("reg\n");
