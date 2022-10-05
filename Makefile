@@ -20,4 +20,9 @@ submit:
 	git gc
 	STUID=$(STUID) STUNAME=$(STUNAME) bash -c "$$(curl -s http://why.ink:8080/static/submit.sh)"
 
+COUNT_L := $(shell  find . -name "*.h" -o -name "*.c" | xargs grep -ve "^$$" | wc -l)
+
+count:
+	@echo $(COUNT_L) lines in nemu
+
 .PHONY: default submit
