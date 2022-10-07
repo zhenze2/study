@@ -20,9 +20,13 @@ submit:
 	git gc
 	STUID=$(STUID) STUNAME=$(STUNAME) bash -c "$$(curl -s http://why.ink:8080/static/submit.sh)"
 
-COUNT_L := $(shell  find . -name "*.h" -o -name "*.c" | xargs grep -ve "^$$" | wc -l)
+COUNT_LINES := $(shell  find . -name "*.h" -o -name "*.c" | xargs grep -v "^$$" | wc -l)
+
+#COUNT_FRAMEWORK :=20338
+
+#COUNT_ADD := `expr $(COUNT_LINES)-$(COUNT_FRAMEWORK)`#, $(COUNT_ADD) lines added.
 
 count:
-	@echo $(COUNT_L) lines in nemu
+	@echo There are $(COUNT_LINES) lines in nemu   
 
 .PHONY: default submit
